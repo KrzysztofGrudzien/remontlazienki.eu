@@ -1,8 +1,12 @@
 import React from "react"
+import styled from "styled-components"
 
+const Header = styled.h1`
+  background-color: red;
+`
 const IndexPage = () => (
   <>
-    <h1>Witaj na naszej stronie</h1>
+    <Header>Witaj na naszej stronie</Header>
   </>
 )
 
