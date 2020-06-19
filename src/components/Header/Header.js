@@ -25,6 +25,12 @@ const NavigationList = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style: none;
+
+  a {
+    color: #202020;
+    font-weight: 600;
+    text-decoration: none;
+  }
 `
 const NavigationListItem = styled.li`
   font-size: 0.875rem;
@@ -59,7 +65,7 @@ const Header = ({ siteTitle, siteTitleColor }) => (
         <Link to="/gallery">galeria</Link>
       </NavigationListItem>
       <NavigationListItem>
-        <Link to="/contact">kontak</Link>
+        <Link to="/contact">kontakt</Link>
       </NavigationListItem>
     </NavigationList>
   </NavigationWrapper>
