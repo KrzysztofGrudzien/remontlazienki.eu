@@ -1,10 +1,5 @@
 import React from "react"
-import Layout from "../layouts/index"
 
-const GalleryPage = () => (
-  <Layout>
-    <h1>Galeria</h1>
-  </Layout>
-)
+const GalleryPage = () => <h1>Galeria</h1>
 
 export default GalleryPage

@@ -1,10 +1,5 @@
 import React from "react"
-import Header from "../components/Header/Header"
 
-const IndexPage = () => (
-  <Header>
-    <h1>TEST</h1>
-  </Header>
-)
+const IndexPage = () => <h1>Witaj na RemontLazienki.Eu</h1>
 
 export default IndexPage
