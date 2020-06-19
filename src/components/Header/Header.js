@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
+
 const NavigationWrapper = styled.nav`
   align-items: center;
   color: #202020;
@@ -22,9 +23,11 @@ const LinkHeaderColor = styled(LinkHeader)`
   color: #1078c9;
 `
 const NavigationList = styled.ul`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   list-style: none;
+  margin: 0;
 
   a {
     color: #202020;
@@ -35,12 +38,18 @@ const NavigationList = styled.ul`
 const NavigationListItem = styled.li`
   font-size: 0.875rem;
   margin-right: 34px;
+  margin-bottom: 0;
   text-transform: lowercase;
+
+  &:last-child {
+    margin-right: 0;
+  }
 `
 const Logo = styled.h1`
   color: #202020;
   font-size: 20px;
   font-weight: 600;
+  margin: 0;
 `
 
 const Header = ({ siteTitle, siteTitleColor }) => (
