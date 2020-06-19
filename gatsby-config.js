@@ -14,6 +14,7 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
+            subsets: [`latin-ext`],
             variants: [`300`, `400`, `600`, `700`, `800`],
           },
         ],
