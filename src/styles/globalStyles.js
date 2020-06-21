@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
+
+:root {
+  --color: #488cff;
+}
+
 html {
     font-family: sans-serif;
     font-size: 62.5%;

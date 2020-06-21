@@ -2,13 +2,17 @@ import React from "react"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import GlobalStyle from "../styles/globalStyles"
+import { theme } from "../styles/themeStyles"
+import { ThemeProvider } from "styled-components"
 
 const Layout = ({ children }) => (
   <>
     <GlobalStyle />
-    <Header />
-    {children}
-    <Footer />
+    <ThemeProvider theme={theme}>
+      <Header />
+      {children}
+      <Footer />
+    </ThemeProvider>
   </>
 )
 
