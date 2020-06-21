@@ -9,9 +9,20 @@ html {
   }
   body {
     margin: 0;
-    padding: 0 20px 0 20px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+  }
+  
+  body::before {
+    background-color: #EAEAEA;
+    content: '';
+    height:100vh;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    
   }
   article,
   aside,
