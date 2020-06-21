@@ -42,7 +42,7 @@ const NavigationListItem = styled.li`
   text-transform: lowercase;
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 20px;
   }
 `
 const Logo = styled.h1`
@@ -50,6 +50,7 @@ const Logo = styled.h1`
   font-size: 20px;
   font-weight: 600;
   margin: 0;
+  margin-left: 20px;
 `
 
 const Header = ({ siteTitle, siteTitleColor }) => (
