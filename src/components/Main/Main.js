@@ -2,10 +2,9 @@ import React from "react"
 import styled from "styled-components"
 
 const MainContent = styled.main`
+  background-color: ${({ theme }) => theme.colors.grey100};
   display: flex;
-  width: 100%;
-  height: 700px;
-  background-color: #efefef;
+  height: calc(100vh - 206px);
 `
 const Main = ({ children }) => (
   <>

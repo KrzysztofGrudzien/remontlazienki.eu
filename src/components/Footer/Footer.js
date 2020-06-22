@@ -1,20 +1,30 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const FooterDescription = styled.footer`
-  color: #b6b6b6;
-  width: 100%;
+  color: ${({ theme }) => theme.colors.grey200};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-family: ${({ theme }) => theme.fontFamily.open};
   height: 103px;
-  font-size: 12px;
-  font-family: "Open Sans", sans-serif;
+  line-height: 173px;
   text-align: center;
-  padding-top: 90px;
 `
 
-const Footer = () => (
+const Footer = ({ textFooter, textAuthor }) => (
   <FooterDescription>
-    Wszelkie prawa zastrzeżone przez RemontLazienki.eu 2020©
+    {textFooter} {textAuthor}
   </FooterDescription>
 )
+
+Footer.propTypes = {
+  textFooter: PropTypes.string.isRequired,
+  textAuthor: PropTypes.string,
+}
+
+Footer.defaultProps = {
+  textFooter: `Wszelkie prawa zastrzeżone przez RemontLazienki.eu 2020©. `,
+  textAuthor: `Designed by Krzysztof Grudzień`,
+}
 
 export default Footer

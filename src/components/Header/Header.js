@@ -5,22 +5,23 @@ import styled from "styled-components"
 
 const NavigationWrapper = styled.nav`
   align-items: center;
-  color: #202020;
+  color: ${({ theme }) => theme.colors.primary};
   display: flex;
   justify-content: space-between;
-  font-family: "Open Sans";
-  font-size: 20px;
-  font-weight: 400;
+  font-family: ${({ theme }) => theme.fontFamily.open};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
   height: 103px;
 `
 
 const LinkHeader = styled(Link)`
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   text-transform: uppercase;
 `
 
 const LinkHeaderColor = styled(LinkHeader)`
-  color: #1078c9;
+  color: ${({ theme }) => theme.colors.secondary};
 `
 const NavigationList = styled.ul`
   align-items: center;
@@ -30,13 +31,12 @@ const NavigationList = styled.ul`
   margin: 0;
 
   a {
-    color: #202020;
-    font-weight: 600;
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
     text-decoration: none;
   }
 `
 const NavigationListItem = styled.li`
-  font-size: 0.875rem;
   margin-right: 34px;
   margin-bottom: 0;
   text-transform: lowercase;
@@ -46,9 +46,9 @@ const NavigationListItem = styled.li`
   }
 `
 const Logo = styled.h1`
-  color: #202020;
-  font-size: 20px;
-  font-weight: 600;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.fontSize.ml};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
   margin: 0;
   margin-left: 20px;
 `
@@ -82,8 +82,8 @@ const Header = ({ siteTitle, siteTitleColor }) => (
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-  siteTitleColor: PropTypes.string,
+  siteTitle: PropTypes.string.isRequired,
+  siteTitleColor: PropTypes.string.isRequired,
 }
 
 Header.defaultProps = {

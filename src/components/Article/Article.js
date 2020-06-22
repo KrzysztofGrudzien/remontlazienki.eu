@@ -1,0 +1,16 @@
+import React from "react"
+import styled from "styled-components"
+
+const ArticleDescription = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: ${({ theme }) => theme.fontFamily.open};
+  padding: 20px;
+  width: 50%;
+`
+const Article = ({ children }) => (
+  <ArticleDescription>{children}</ArticleDescription>
+)
+
+export default Article
