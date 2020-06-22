@@ -7,6 +7,7 @@ const ArticleDescription = styled.article`
   justify-content: center;
   font-family: ${({ theme }) => theme.fontFamily.open};
   padding: 20px;
+  position: relative;
   width: 50%;
 `
 const Article = ({ children }) => (

@@ -7,24 +7,32 @@ import Article from "../components/Article/Article"
 import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
 import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
 import ArticleParagraph from "../components/ArticleParagraph/ArticleParagraph"
+import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
 
 const Image = styled.div`
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  position: relative;
   width: 50%;
-  height: 100%;
 `
 const AboutPage = ({ data }) => (
   <Main>
     <Article>
+      <CrossDecoration type="left-top" />
+      <CrossDecoration type="right-top" />
+      <CrossDecoration type="right-bottom" />
+      <CrossDecoration type="left-bottom" />
       <WelcomeParagraph type="about" />
       <WelcomeHeader type="about" />
       <ArticleParagraph type="about" />
       <Button />
     </Article>
-    <Image image={data.file.publicURL} alt="hero" />
+    <Image image={data.file.publicURL} alt="hero">
+      <CrossDecoration type="right-top-fix" />
+      <CrossDecoration type="right-bottom-fix" />
+    </Image>
   </Main>
 )
 
