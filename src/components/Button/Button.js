@@ -26,14 +26,14 @@ const InternalLink = styled(Link)`
   }
 
   &:hover::before {
-    width: 0;
     right: 0;
+    width: 0;
   }
 
   :hover {
     background-color: ${({ theme }) => theme.colors.grey300};
-    color: ${({ theme }) => theme.colors.grey50};
     box-shadow: ${({ theme }) => theme.shadow.primary};
+    color: ${({ theme }) => theme.colors.grey50};
   }
 `
 const Button = ({ type }) => {
