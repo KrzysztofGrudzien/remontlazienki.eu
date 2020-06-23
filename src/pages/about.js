@@ -18,7 +18,7 @@ const Image = styled.div`
   width: 50%;
 `
 const AboutPage = ({ data }) => (
-  <Main>
+  <Main color>
     <Article>
       <CrossDecoration type="left-top" />
       <CrossDecoration type="right-top" />

@@ -8,24 +8,36 @@ import Article from "../components/Article/Article"
 import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
 import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
 import ArticleParagraph from "../components/ArticleParagraph/ArticleParagraph"
+import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 50%;
+`
 
 const Image = styled(Img)`
-  background-image: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  width: 50%;
   height: 100%;
 `
 const IndexPage = ({ data }) => (
-  <Main>
+  <Main color>
     <Article>
+      <CrossDecoration type="left-top" />
+      <CrossDecoration type="right-top" />
+      <CrossDecoration type="right-bottom" />
+      <CrossDecoration type="left-bottom" />
       <WelcomeParagraph />
       <WelcomeHeader />
       <ArticleParagraph />
       <Button />
     </Article>
-    <Image fluid={data.file.childImageSharp.fluid} alt="zdjęcie łazienki" />
+    <ImageWrapper>
+      <CrossDecoration type="right-top-fix" />
+      <CrossDecoration type="right-bottom-fix" />
+      <Image
+        fluid={data.file.childImageSharp.fluid}
+        alt="zdjęcie łazienki"
+      ></Image>
+    </ImageWrapper>
   </Main>
 )
 

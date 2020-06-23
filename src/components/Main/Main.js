@@ -1,14 +1,23 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 const MainContent = styled.main`
-  background-color: ${({ theme }) => theme.colors.grey100};
   display: flex;
   height: calc(100vh - 206px);
+
+  ${({ color }) =>
+    color &&
+    css`
+      background-color: ${({ theme }) => theme.colors.grey100};
+    `}
 `
-const Main = ({ children }) => (
+const Main = ({ children, color }) => (
   <>
-    <MainContent>{children}</MainContent>
+    {color ? (
+      <MainContent color>{children}</MainContent>
+    ) : (
+      <MainContent>{children}</MainContent>
+    )}
   </>
 )
 
