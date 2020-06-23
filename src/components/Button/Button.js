@@ -7,6 +7,7 @@ const InternalLink = styled(Link)`
   color: ${({ theme }) => theme.colors.grey300};
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSize.s};
+  font-family: ${({ theme }) => theme.fontFamily.open};
   padding: 10px 40px;
   position: relative;
   text-align: center;
