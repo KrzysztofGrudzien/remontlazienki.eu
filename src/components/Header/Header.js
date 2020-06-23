@@ -9,7 +9,7 @@ const NavigationWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   font-family: ${({ theme }) => theme.fontFamily.open};
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   height: 103px;
 `
