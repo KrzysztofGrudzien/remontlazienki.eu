@@ -8,6 +8,8 @@ const WelcomeText = styled.h2`
 const WelcomeHeader = ({ type }) => {
   if (type === "about") {
     return <WelcomeText>remontlazienek.eu</WelcomeText>
+  } else if (type === "gallery") {
+    return <WelcomeText>nasze usługi</WelcomeText>
   } else {
     return <WelcomeText>łazienek</WelcomeText>
   }
