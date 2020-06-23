@@ -85,10 +85,10 @@ const CrossRightBottom = styled.span`
 `
 
 const CrossLeftBottom = styled.span`
-  bottom: -15px;
+  bottom: -16px;
   display: inline-block;
   height: 30px;
-  left: -16px;
+  left: -14px;
   position: absolute;
   width: 30px;
 
@@ -140,7 +140,7 @@ const CrossRightTopFix = styled.span`
 `
 
 const CrossRightBottomFix = styled.span`
-  bottom: -15px;
+  bottom: -16px;
   display: inline-block;
   height: 30px;
   right: 0;
@@ -166,6 +166,62 @@ const CrossRightBottomFix = styled.span`
     width: 15px;
   }
 `
+
+const CrossCenterBottom = styled.span`
+  bottom: -16px;
+  display: inline-block;
+  height: 30px;
+  left: calc(50% - 15px);
+  position: absolute;
+  width: 30px;
+
+  &::before {
+    background-color: ${({ theme }) => theme.colors.grey300};
+    content: "";
+    height: 30px;
+    left: calc(50% - 1px);
+    top: 0;
+    position: absolute;
+    width: 1px;
+  }
+  &::after {
+    background-color: ${({ theme }) => theme.colors.grey300};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: calc(50% - 1px);
+    width: 30px;
+  }
+`
+
+const CrossCenterTop = styled.span`
+  display: inline-block;
+  height: 30px;
+  left: calc(50% - 15px);
+  position: absolute;
+  top: -15px;
+  width: 30px;
+
+  &::before {
+    background-color: ${({ theme }) => theme.colors.grey300};
+    content: "";
+    height: 30px;
+    left: calc(50% - 1px);
+    top: 0;
+    position: absolute;
+    width: 1px;
+  }
+  &::after {
+    background-color: ${({ theme }) => theme.colors.grey300};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: calc(50% - 1px);
+    width: 30px;
+  }
+`
 const CrossDecoration = ({ type }) => {
   if (type === "left-top") {
     return <CrossLeftTop />
@@ -175,6 +231,10 @@ const CrossDecoration = ({ type }) => {
     return <CrossRightBottom />
   } else if (type === "left-bottom") {
     return <CrossLeftBottom />
+  } else if (type === "center-bottom") {
+    return <CrossCenterBottom />
+  } else if (type === "center-top") {
+    return <CrossCenterTop />
   } else if (type === "right-top-fix") {
     return <CrossRightTopFix />
   } else {
