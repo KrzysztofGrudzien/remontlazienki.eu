@@ -13,6 +13,7 @@ import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
 const ImageWrapper = styled.div`
   position: relative;
   width: 50%;
+  height: 100%;
 `
 
 const Image = styled(Img)`

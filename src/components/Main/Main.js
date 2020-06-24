@@ -3,7 +3,8 @@ import styled, { css } from "styled-components"
 
 const MainContent = styled.main`
   display: flex;
-  height: calc(100vh - 206px);
+  flex-wrap: wrap;
+  min-height: calc(100vh - 206px);
 
   ${({ color }) =>
     color &&

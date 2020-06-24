@@ -61,7 +61,7 @@ const AboutPage = ({ data }) => (
       <WelcomeParagraph type="about" />
       <WelcomeHeader type="about" />
       <ArticleParagraph type="about" />
-      <Button />
+      <Button type="service" />
     </Article>
     <GalleryWrapper>
       <Image image={data.file.publicURL} alt="hero">

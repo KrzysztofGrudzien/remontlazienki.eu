@@ -18,7 +18,7 @@ html {
   body::before {
     background-color: #EAEAEA;
     content: '';
-    height:100vh;
+    height:100%;
     left: 50%;
     position: absolute;
     top: 0;
