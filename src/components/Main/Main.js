@@ -4,7 +4,7 @@ import styled, { css } from "styled-components"
 const MainContent = styled.main`
   display: flex;
   flex-wrap: wrap;
-  height: calc(100vh - 206px);
+  min-height: calc(100vh - 206px);
 
   ${({ color }) =>
     color &&
