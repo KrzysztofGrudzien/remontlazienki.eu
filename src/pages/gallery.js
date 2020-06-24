@@ -28,6 +28,15 @@ const GalleryWrapper = styled.article`
   flex-direction: column;
   padding: 20px;
   width: 100%;
+
+  .container {
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.grey50};
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    margin: 40px 0 0 0;
+  }
 `
 
 const GalleryCards = styled.div`
@@ -176,7 +185,28 @@ const GalleryPage = ({ data }) => (
           <CrossDecoration type="left-bottom" />
           <CrossDecoration type="right-bottom" />
         </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
       </GalleryCards>
+      <div className="container">
+        <Button type="load-more"></Button>
+      </div>
     </GalleryWrapper>
     <ActionBox>
       <CrossDecoration type="left-top" />
