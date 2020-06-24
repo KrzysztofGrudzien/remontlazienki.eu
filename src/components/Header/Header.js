@@ -47,7 +47,7 @@ const NavigationListItem = styled.li`
 `
 const Logo = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
-  font-size: ${({ theme }) => theme.fontSize.ml};
+  font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   margin: 0;
   margin-left: 20px;
