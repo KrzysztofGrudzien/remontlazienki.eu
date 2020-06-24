@@ -5,12 +5,18 @@ import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
 import Button from "../components/Button/Button"
+import { graphql } from "gatsby"
 
 const ImageWrapper = styled.div`
+  align-items: center;
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  color: ${({ theme }) => theme.colors.grey100};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 355px;
   position: relative;
   margin-bottom: 50px;
@@ -114,6 +120,8 @@ const ContactBoxTitle = styled(QuestionBoxTitle)`
 const ServicesPage = ({ data }) => (
   <Main>
     <ImageWrapper image={data.file.publicURL} alt="hero">
+      <WelcomeHeader type="about" />
+      <WelcomeParagraph type="about-more" />
       <CrossDecoration type="left-top" />
       <CrossDecoration type="center-bottom" />
       <CrossDecoration type="right-top-fix" />

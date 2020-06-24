@@ -12,6 +12,8 @@ const WelcomeParagraph = ({ type }) => {
     return <WelcomeText>witaj na naszej stronie</WelcomeText>
   } else if (type === "gallery") {
     return <WelcomeText>co możemy dla państwa zrobić?</WelcomeText>
+  } else if (type === "about-more") {
+    return <WelcomeText>aranżacja i wykończenie łazienek</WelcomeText>
   } else {
     return <WelcomeText>aranżacja i wykończenie</WelcomeText>
   }
