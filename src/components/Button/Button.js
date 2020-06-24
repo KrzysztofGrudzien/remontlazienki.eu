@@ -42,6 +42,8 @@ const Button = ({ type }) => {
     return <InternalLink to="/services">usługi</InternalLink>
   } else if (type === "gallery") {
     return <InternalLink to="/gallery">galeria</InternalLink>
+  } else if (type === "contact") {
+    return <InternalLink to="/contact">contact</InternalLink>
   } else {
     return <InternalLink to="/about">about</InternalLink>
   }
