@@ -10,8 +10,10 @@ const WelcomeText = styled.p`
 const WelcomeParagraph = ({ type }) => {
   if (type === "about") {
     return <WelcomeText>witaj na naszej stronie</WelcomeText>
-  } else if (type === "gallery") {
+  } else if (type === "service") {
     return <WelcomeText>co możemy dla państwa zrobić?</WelcomeText>
+  } else if (type === "gallery") {
+    return <WelcomeText>ostatnio zrealizowane projekty</WelcomeText>
   } else if (type === "about-more") {
     return <WelcomeText>aranżacja i wykończenie łazienek</WelcomeText>
   } else {
