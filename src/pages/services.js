@@ -4,6 +4,7 @@ import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
 import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
+import Button from "../components/Button/Button"
 
 const ImageWrapper = styled.div`
   background-image: url(${({ image }) => image});
@@ -67,6 +68,47 @@ const ArticleHeader = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   padding: 10px;
+`
+
+const ActionBox = styled.div`
+  background-color: ${({ theme }) => theme.colors.white};
+  display: flex;
+  height: 260px;
+  margin: 20px 0;
+  position: relative;
+  width: 100%;
+`
+
+const QuestionBox = styled.div`
+  background-image: url(${({ image }) => image});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+  width: 50%;
+`
+
+const ContactBox = styled.article`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.white};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+`
+
+const QuestionBoxTitle = styled.h2`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
+  line-height: 45px;
+  padding-top: 60px;
+  text-transform: uppercase;
+  text-align: center;
+`
+
+const ContactBoxTitle = styled(QuestionBoxTitle)`
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 const ServicesPage = ({ data }) => (
@@ -165,6 +207,26 @@ const ServicesPage = ({ data }) => (
         </ArticleCard>
       </ArticleCards>
     </Article>
+    <ActionBox>
+      <CrossDecoration type="left-top" />
+      <CrossDecoration type="center-bottom" />
+      <CrossDecoration type="right-top-fix" />
+      <CrossDecoration type="left-bottom" />
+      <CrossDecoration type="center-top" />
+      <CrossDecoration type="right-bottom-fix" />
+      <QuestionBox image={data.file.publicURL} alt="hero">
+        <QuestionBoxTitle>
+          Jesteś zainteresowany <br />
+          współpracą?
+        </QuestionBoxTitle>
+      </QuestionBox>
+      <ContactBox>
+        <ContactBoxTitle>
+          skontaktuj się <br /> z nami
+        </ContactBoxTitle>
+        <Button type="contact">wypełnij formularz</Button>
+      </ContactBox>
+    </ActionBox>
   </Main>
 )
 
