@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 const InternalLink = styled(Link)`
   border: solid 1px ${({ theme }) => theme.colors.grey300};
   color: ${({ theme }) => theme.colors.grey300};
+  cursor: pointer;
   display: inline-block;
   font-size: ${({ theme }) => theme.fontSize.s};
   font-family: ${({ theme }) => theme.fontFamily.open};
@@ -46,6 +47,8 @@ const Button = ({ type }) => {
     return <InternalLink to="/contact">kontakt</InternalLink>
   } else if (type === "contact-form") {
     return <InternalLink to="/contact">wypełnij formularz</InternalLink>
+  } else if (type === "load-more") {
+    return <InternalLink>więcej</InternalLink>
   } else {
     return <InternalLink to="/about">o nas</InternalLink>
   }
