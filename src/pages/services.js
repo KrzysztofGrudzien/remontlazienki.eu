@@ -232,7 +232,7 @@ const ServicesPage = ({ data }) => (
         <ContactBoxTitle>
           skontaktuj się <br /> z nami
         </ContactBoxTitle>
-        <Button type="contact">wypełnij formularz</Button>
+        <Button type="contact-form" />
       </ContactBox>
     </ActionBox>
   </Main>

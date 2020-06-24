@@ -43,9 +43,11 @@ const Button = ({ type }) => {
   } else if (type === "gallery") {
     return <InternalLink to="/gallery">galeria</InternalLink>
   } else if (type === "contact") {
-    return <InternalLink to="/contact">contact</InternalLink>
+    return <InternalLink to="/contact">kontakt</InternalLink>
+  } else if (type === "contact-form") {
+    return <InternalLink to="/contact">wypełnij formularz</InternalLink>
   } else {
-    return <InternalLink to="/about">about</InternalLink>
+    return <InternalLink to="/about">o nas</InternalLink>
   }
 }
 
