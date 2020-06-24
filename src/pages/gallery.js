@@ -22,6 +22,32 @@ const ImageWrapper = styled.div`
   margin-bottom: 50px;
   width: 100%;
 `
+
+const GalleryWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+`
+
+const GalleryCards = styled.div`
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-top: 20px;
+  z-index: 100;
+`
+
+const GalleryCard = styled.div`
+  background-image: url("https://picsum.photos/200/300");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 400px;
+  position: relative;
+`
+
 const ActionBox = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
@@ -42,7 +68,7 @@ const QuestionBox = styled.div`
 
 const ContactBox = styled.article`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.grey50};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -74,6 +100,84 @@ const GalleryPage = ({ data }) => (
       <CrossDecoration type="center-top" />
       <CrossDecoration type="right-bottom-fix" />
     </ImageWrapper>
+    <GalleryWrapper>
+      <WelcomeParagraph type="gallery" />
+      <WelcomeHeader type="gallery" />
+      <GalleryCards>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+        <GalleryCard>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="right-bottom" />
+        </GalleryCard>
+      </GalleryCards>
+    </GalleryWrapper>
     <ActionBox>
       <CrossDecoration type="left-top" />
       <CrossDecoration type="center-bottom" />
