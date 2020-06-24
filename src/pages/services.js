@@ -40,13 +40,14 @@ const ArticleCards = styled.div`
 
 const ArticleCard = styled.article`
   border: solid 1px ${({ theme }) => theme.colors.grey100};
+  background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
   min-height: 600px;
   position: relative;
   transition: background-color 0.5s ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.grey100};
+    background-color: ${({ theme }) => theme.colors.grey50};
   }
 
   ul {
@@ -96,7 +97,7 @@ const QuestionBox = styled.div`
 
 const ContactBox = styled.article`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.grey50};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -130,8 +131,8 @@ const ServicesPage = ({ data }) => (
       <CrossDecoration type="right-bottom-fix" />
     </ImageWrapper>
     <Article>
-      <WelcomeParagraph type="gallery" />
-      <WelcomeHeader type="gallery" />
+      <WelcomeParagraph type="service" />
+      <WelcomeHeader type="service" />
       <ArticleCards>
         <ArticleCard>
           <CrossDecoration type="left-top" />
