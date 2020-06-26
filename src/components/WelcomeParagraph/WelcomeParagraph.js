@@ -16,6 +16,12 @@ const WelcomeParagraph = ({ type }) => {
     return <WelcomeText>ostatnio zrealizowane projekty</WelcomeText>
   } else if (type === "about-more") {
     return <WelcomeText>aranżacja i wykończenie łazienek</WelcomeText>
+  } else if (type === "contact") {
+    return <WelcomeText>wypełnij formularz kontaktowy</WelcomeText>
+  } else if (type === "company-desc") {
+    return <WelcomeText>usługi remontowo-wykończeniowe łazienek</WelcomeText>
+  } else if (type === "author") {
+    return <WelcomeText>główny wykonawca</WelcomeText>
   } else {
     return <WelcomeText>aranżacja i wykończenie</WelcomeText>
   }
