@@ -49,6 +49,8 @@ const Button = ({ type }) => {
     return <InternalLink to="/contact">wypełnij formularz</InternalLink>
   } else if (type === "load-more") {
     return <InternalLink>więcej</InternalLink>
+  } else if (type === "send") {
+    return <InternalLink>wyślij</InternalLink>
   } else {
     return <InternalLink to="/about">o nas</InternalLink>
   }
