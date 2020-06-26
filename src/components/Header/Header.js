@@ -28,7 +28,7 @@ const NavigationList = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style: none;
-  margin: 0;
+  margin: 0 20px 0 0;
 
   a {
     color: ${({ theme }) => theme.colors.primary};
@@ -77,6 +77,12 @@ const Header = ({ siteTitle, siteTitleColor }) => (
       <NavigationListItem>
         <Link to="/contact">kontakt</Link>
       </NavigationListItem>
+      <label>
+        <select name="language" id="language">
+          <option value="pl">PL</option>
+          <option value="en">EN</option>
+        </select>
+      </label>
     </NavigationList>
   </NavigationWrapper>
 )
