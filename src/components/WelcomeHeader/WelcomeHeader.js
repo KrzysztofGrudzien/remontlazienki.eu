@@ -12,6 +12,8 @@ const WelcomeHeader = ({ type }) => {
     return <WelcomeText>nasze usługi</WelcomeText>
   } else if (type === "gallery") {
     return <WelcomeText>nasza galeria</WelcomeText>
+  } else if (type === "contact") {
+    return <WelcomeText>kontakt z nami</WelcomeText>
   } else {
     return <WelcomeText>łazienek</WelcomeText>
   }
