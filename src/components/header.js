@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
@@ -52,44 +52,53 @@ const Logo = styled.h1`
   margin: 0;
   margin-left: 20px;
 `
-
-const Header = ({ siteTitle, siteTitleColor }) => (
-  <NavigationWrapper>
-    <Logo>
-      <LinkHeader to="/">
-        {siteTitle}
-        <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
-      </LinkHeader>
-    </Logo>
-    <NavigationList>
-      <NavigationListItem>
-        <Link to="/">home</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/about">o nas</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/services">usługi</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/gallery">galeria</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/contact">kontakt</Link>
-      </NavigationListItem>
-      <label>
-        <select name="language" id="language">
-          <option value="pl">PL</option>
-          <option value="en">EN</option>
-        </select>
-      </label>
-    </NavigationList>
-  </NavigationWrapper>
-)
+const Header = ({ siteTitleColor }) => {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+          description
+          menuLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <NavigationWrapper>
+      <Logo>
+        <LinkHeader to="/">
+          {data.site.siteMetadata.title.substring(0, 6)}
+          <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
+        </LinkHeader>
+      </Logo>
+      <NavigationList>
+        {data.site.siteMetadata.menuLinks.map(link => (
+          <NavigationListItem key={link.name}>
+            <Link to={link.link}>{link.name}</Link>
+          </NavigationListItem>
+        ))}
+        <label>
+          <select name="language" id="language">
+            <option value="pl">PL</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+      </NavigationList>
+    </NavigationWrapper>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   siteTitleColor: PropTypes.string.isRequired,
+  menuLinks: PropTypes.exact({
+    name: PropTypes.string,
+    link: PropTypes.number,
+  }),
 }
 
 Header.defaultProps = {
