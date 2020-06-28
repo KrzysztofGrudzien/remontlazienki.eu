@@ -3,7 +3,7 @@ import Main from "../components/main"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Button from "../components/button"
+import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => (
       <WelcomeParagraph />
       <WelcomeHeader />
       <ArticleParagraph />
-      <Button />
+      <LinkNavigation />
     </Article>
     <ImageWrapper>
       <CrossDecoration type="right-top-fix" />

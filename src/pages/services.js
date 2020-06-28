@@ -4,7 +4,7 @@ import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/crossDecoration"
-import Button from "../components/button"
+import LinkNavigation from "../components/linkNavigation"
 import { graphql } from "gatsby"
 
 const ImageWrapper = styled.div`
@@ -233,7 +233,7 @@ const ServicesPage = ({ data }) => (
         <ContactBoxTitle>
           skontaktuj się <br /> z nami
         </ContactBoxTitle>
-        <Button type="contact-form" />
+        <LinkNavigation type="contact-form" />
       </ContactBox>
     </ActionBox>
   </Main>

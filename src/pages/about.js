@@ -2,7 +2,7 @@ import React from "react"
 import Main from "../components/main"
 import styled, { css } from "styled-components"
 import { graphql } from "gatsby"
-import Button from "../components/button"
+import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
@@ -61,7 +61,7 @@ const AboutPage = ({ data }) => (
       <WelcomeParagraph type="about" />
       <WelcomeHeader type="about" />
       <ArticleParagraph type="about" />
-      <Button type="service" />
+      <LinkNavigation type="service" />
     </Article>
     <GalleryWrapper>
       <Image image={data.file.publicURL} alt="hero">
@@ -70,7 +70,7 @@ const AboutPage = ({ data }) => (
         <ButtonGallery prev>&#10094;</ButtonGallery>
         <ButtonGallery>&#10095;</ButtonGallery>
       </Image>
-      <Button type="gallery" />
+      <LinkNavigation type="gallery" />
     </GalleryWrapper>
   </Main>
 )

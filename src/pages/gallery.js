@@ -5,7 +5,7 @@ import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/crossDecoration"
 import { graphql } from "gatsby"
-import Button from "../components/button"
+import LinkNavigation from "../components/linkNavigation"
 
 const ImageWrapper = styled.div`
   align-items: center;
@@ -205,7 +205,7 @@ const GalleryPage = ({ data }) => (
         </GalleryCard>
       </GalleryCards>
       <div className="container">
-        <Button type="load-more"></Button>
+        <LinkNavigation type="load-more" />
       </div>
     </GalleryWrapper>
     <ActionBox>
@@ -225,7 +225,7 @@ const GalleryPage = ({ data }) => (
         <ContactBoxTitle>
           skontaktuj się <br /> z nami
         </ContactBoxTitle>
-        <Button type="contact-form" />
+        <LinkNavigation type="contact-form" />
       </ContactBox>
     </ActionBox>
   </Main>
