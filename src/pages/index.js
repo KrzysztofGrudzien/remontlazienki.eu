@@ -1,14 +1,14 @@
 import React from "react"
-import Main from "../components/Main/Main"
+import Main from "../components/main"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Button from "../components/Button/Button"
-import Article from "../components/Article/Article"
-import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
-import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
-import ArticleParagraph from "../components/ArticleParagraph/ArticleParagraph"
-import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
+import Button from "../components/button"
+import Article from "../components/article"
+import WelcomeParagraph from "../components/welcomeParagraph"
+import WelcomeHeader from "../components/welcomeHeader"
+import ArticleParagraph from "../components/articleParagraph"
+import CrossDecoration from "../components/crossDecoration"
 
 const ImageWrapper = styled.div`
   position: relative;

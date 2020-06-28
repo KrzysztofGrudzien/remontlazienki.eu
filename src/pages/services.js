@@ -1,10 +1,10 @@
 import React from "react"
-import Main from "../components/Main/Main"
-import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
-import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
+import Main from "../components/main"
+import WelcomeParagraph from "../components/welcomeParagraph"
+import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
-import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
-import Button from "../components/Button/Button"
+import CrossDecoration from "../components/crossDecoration"
+import Button from "../components/button"
 import { graphql } from "gatsby"
 
 const ImageWrapper = styled.div`
