@@ -1,8 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `remontlazienki.eu`,
+    description: `Kompleksowe remonty łazienek - od projektu łazienki, po przez remont,aż do wykończenia`,
+    author: `Krzysztof Grudzień`,
+    menuLinks: [
+      { name: "index", link: "/" },
+      { name: "about", link: "/about" },
+      { name: "services", link: "/services" },
+      { name: "gallery", link: "/gallery" },
+      { name: "contact", link: "/contact" },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
