@@ -2,7 +2,6 @@ import React from "react"
 import Main from "../components/main"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
@@ -11,12 +10,12 @@ import ArticleParagraph from "../components/articleParagraph"
 import CrossDecoration from "../components/crossDecoration"
 
 const ImageWrapper = styled.div`
+  background-image: url(${({ image }) => image});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   position: relative;
   width: 50%;
-  height: 100%;
-`
-
-const Image = styled(Img)`
   height: 100%;
 `
 const IndexPage = ({ data }) => (
@@ -31,27 +30,19 @@ const IndexPage = ({ data }) => (
       <ArticleParagraph />
       <LinkNavigation />
     </Article>
-    <ImageWrapper>
+    <ImageWrapper image={data.file.publicURL} alt="hero">
       <CrossDecoration type="right-top-fix" />
       <CrossDecoration type="right-bottom-fix" />
-      <Image
-        fluid={data.file.childImageSharp.fluid}
-        alt="zdjęcie łazienki"
-      ></Image>
     </ImageWrapper>
   </Main>
 )
 
-export default IndexPage
-
 export const query = graphql`
   {
     file(name: { eq: "hero2" }) {
-      childImageSharp {
-        fluid(quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
+      publicURL
     }
   }
 `
+
+export default IndexPage
