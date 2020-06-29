@@ -11,7 +11,6 @@ const NavigationWrapper = styled.nav`
   font-family: ${({ theme }) => theme.fontFamily.open};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
-  height: 103px;
 `
 
 const LinkHeader = styled(Link)`
