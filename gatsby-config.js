@@ -4,11 +4,11 @@ module.exports = {
     description: `Kompleksowe remonty łazienek - od projektu łazienki, po przez remont,aż do wykończenia`,
     author: `Krzysztof Grudzień`,
     menuLinks: [
-      { name: "index", link: "/" },
-      { name: "about", link: "/about" },
-      { name: "services", link: "/services" },
-      { name: "gallery", link: "/gallery" },
-      { name: "contact", link: "/contact" },
+      { name: "home", link: "/" },
+      { name: "o nas", link: "/about" },
+      { name: "usługi", link: "/services" },
+      { name: "galeria", link: "/gallery" },
+      { name: "kontakt", link: "/contact" },
     ],
   },
   plugins: [
