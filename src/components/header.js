@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
@@ -11,7 +11,6 @@ const NavigationWrapper = styled.nav`
   font-family: ${({ theme }) => theme.fontFamily.open};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
-  height: 103px;
 `
 
 const LinkHeader = styled(Link)`
@@ -52,40 +51,50 @@ const Logo = styled.h1`
   margin: 0;
   margin-left: 20px;
 `
+const Header = ({ siteTitleColor }) => {
+  const data = useStaticQuery(graphql`
+    {
+      allMenuYaml {
+        nodes {
+          link
+          name
+        }
+      }
+      allSite {
+        nodes {
+          siteMetadata {
+            title
+            description
+          }
+        }
+      }
+    }
+  `)
 
-const Header = ({ siteTitle, siteTitleColor }) => (
-  <NavigationWrapper>
-    <Logo>
-      <LinkHeader to="/">
-        {siteTitle}
-        <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
-      </LinkHeader>
-    </Logo>
-    <NavigationList>
-      <NavigationListItem>
-        <Link to="/">home</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/about">o nas</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/services">usługi</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/gallery">galeria</Link>
-      </NavigationListItem>
-      <NavigationListItem>
-        <Link to="/contact">kontakt</Link>
-      </NavigationListItem>
-      <label>
-        <select name="language" id="language">
-          <option value="pl">PL</option>
-          <option value="en">EN</option>
-        </select>
-      </label>
-    </NavigationList>
-  </NavigationWrapper>
-)
+  return (
+    <NavigationWrapper>
+      <Logo>
+        <LinkHeader to="/">
+          {data.allSite.nodes[0].siteMetadata.title.substring(0, 6)}
+          <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
+        </LinkHeader>
+      </Logo>
+      <NavigationList>
+        {data.allMenuYaml.nodes.map(link => (
+          <NavigationListItem key={link.name}>
+            <Link to={link.link}>{link.name}</Link>
+          </NavigationListItem>
+        ))}
+        <label>
+          <select name="language" id="language">
+            <option value="pl">PL</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+      </NavigationList>
+    </NavigationWrapper>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string.isRequired,

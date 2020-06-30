@@ -6,14 +6,22 @@ const FooterDescription = styled.footer`
   color: ${({ theme }) => theme.colors.grey200};
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-family: ${({ theme }) => theme.fontFamily.open};
+  width: 100%;
   height: 103px;
-  line-height: 173px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const Copyright = styled.p`
+  margin: 0;
   text-align: center;
 `
 
 const Footer = ({ textFooter, textAuthor }) => (
   <FooterDescription>
-    {textFooter} {textAuthor}
+    <Copyright>
+      {textFooter} {textAuthor}
+    </Copyright>
   </FooterDescription>
 )
 
@@ -23,7 +31,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  textFooter: `Wszelkie prawa zastrzeżone przez RemontLazienki.eu 2020©. `,
+  textFooter: `Wszelkie prawa zastrzeżone przez RemontLazienki.eu© - 2020 . `,
   textAuthor: `Designed by Krzysztof Grudzień`,
 }
 

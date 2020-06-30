@@ -38,7 +38,7 @@ const InternalLink = styled(Link)`
     color: ${({ theme }) => theme.colors.grey50};
   }
 `
-const Button = ({ type }) => {
+const LinkNavigation = ({ type }) => {
   if (type === "service") {
     return <InternalLink to="/services">usługi</InternalLink>
   } else if (type === "gallery") {
@@ -56,4 +56,4 @@ const Button = ({ type }) => {
   }
 }
 
-export default Button
+export default LinkNavigation

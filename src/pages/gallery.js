@@ -1,11 +1,11 @@
 import React from "react"
-import Main from "../components/Main/Main"
-import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
-import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
+import Main from "../components/main"
+import WelcomeParagraph from "../components/welcomeParagraph"
+import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
-import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
+import CrossDecoration from "../components/crossDecoration"
 import { graphql } from "gatsby"
-import Button from "../components/Button/Button"
+import LinkNavigation from "../components/linkNavigation"
 
 const ImageWrapper = styled.div`
   align-items: center;
@@ -205,7 +205,7 @@ const GalleryPage = ({ data }) => (
         </GalleryCard>
       </GalleryCards>
       <div className="container">
-        <Button type="load-more"></Button>
+        <LinkNavigation type="load-more" />
       </div>
     </GalleryWrapper>
     <ActionBox>
@@ -225,7 +225,7 @@ const GalleryPage = ({ data }) => (
         <ContactBoxTitle>
           skontaktuj się <br /> z nami
         </ContactBoxTitle>
-        <Button type="contact-form" />
+        <LinkNavigation type="contact-form" />
       </ContactBox>
     </ActionBox>
   </Main>

@@ -1,22 +1,21 @@
 import React from "react"
-import Main from "../components/Main/Main"
+import Main from "../components/main"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
-import Button from "../components/Button/Button"
-import Article from "../components/Article/Article"
-import WelcomeParagraph from "../components/WelcomeParagraph/WelcomeParagraph"
-import WelcomeHeader from "../components/WelcomeHeader/WelcomeHeader"
-import ArticleParagraph from "../components/ArticleParagraph/ArticleParagraph"
-import CrossDecoration from "../components/CrossDecoration/CrossDecoration"
+import LinkNavigation from "../components/linkNavigation"
+import Article from "../components/article"
+import WelcomeParagraph from "../components/welcomeParagraph"
+import WelcomeHeader from "../components/welcomeHeader"
+import ArticleParagraph from "../components/articleParagraph"
+import CrossDecoration from "../components/crossDecoration"
 
 const ImageWrapper = styled.div`
+  background-image: url(${({ image }) => image});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   position: relative;
   width: 50%;
-  height: 100%;
-`
-
-const Image = styled(Img)`
   height: 100%;
 `
 const IndexPage = ({ data }) => (
@@ -29,29 +28,21 @@ const IndexPage = ({ data }) => (
       <WelcomeParagraph />
       <WelcomeHeader />
       <ArticleParagraph />
-      <Button />
+      <LinkNavigation />
     </Article>
-    <ImageWrapper>
+    <ImageWrapper image={data.file.publicURL} alt="hero">
       <CrossDecoration type="right-top-fix" />
       <CrossDecoration type="right-bottom-fix" />
-      <Image
-        fluid={data.file.childImageSharp.fluid}
-        alt="zdjęcie łazienki"
-      ></Image>
     </ImageWrapper>
   </Main>
 )
 
-export default IndexPage
-
 export const query = graphql`
   {
     file(name: { eq: "hero2" }) {
-      childImageSharp {
-        fluid(quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
+      publicURL
     }
   }
 `
+
+export default IndexPage
