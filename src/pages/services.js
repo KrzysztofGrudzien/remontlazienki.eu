@@ -130,11 +130,12 @@ const ServicesPage = () => {
     {
       allServicesYaml {
         nodes {
+          image
           title
           services
         }
       }
-      file(name: { eq: "hero2" }) {
+      file(name: { eq: "bricks" }) {
         publicURL
       }
       allFile(filter: { extension: { eq: "svg" } }) {
@@ -170,10 +171,7 @@ const ServicesPage = () => {
               <CrossDecoration type="right-top" />
               <CrossDecoration type="left-bottom" />
               <CrossDecoration type="right-bottom" />
-              <ArticleImage
-                image={data.file.publicURL}
-                alt="hero"
-              ></ArticleImage>
+              <ArticleImage image={item.image} alt="hero"></ArticleImage>
               <ArticleHeader>{item.title}</ArticleHeader>
               <ul>
                 {item.services.map(service => (
@@ -212,13 +210,5 @@ const ServicesPage = () => {
     </Main>
   )
 }
-
-// export const query = graphql`
-//   {
-//     file(name: { eq: "hero2" }) {
-//       publicURL
-//     }
-//   }
-// `
 
 export default ServicesPage
