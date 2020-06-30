@@ -5,7 +5,7 @@ import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/crossDecoration"
 import LinkNavigation from "../components/linkNavigation"
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const ImageWrapper = styled.div`
   align-items: center;
@@ -118,133 +118,87 @@ const ContactBoxTitle = styled(QuestionBoxTitle)`
   color: ${({ theme }) => theme.colors.primary};
 `
 
-const ServicesPage = ({ data }) => (
-  <Main>
-    <ImageWrapper image={data.file.publicURL} alt="hero">
-      <WelcomeHeader type="about" />
-      <WelcomeParagraph type="about-more" />
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="center-bottom" />
-      <CrossDecoration type="right-top-fix" />
-      <CrossDecoration type="left-bottom" />
-      <CrossDecoration type="center-top" />
-      <CrossDecoration type="right-bottom-fix" />
-    </ImageWrapper>
-    <Article>
-      <WelcomeParagraph type="service" />
-      <WelcomeHeader type="service" />
-      <ArticleCards>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>glazura i terakota</ArticleHeader>
-          <ul>
-            <li>szlifowanie narozników</li>
-            <li>układanie glazury i terakoty</li>
-            <li>układanie gresu</li>
-          </ul>
-        </ArticleCard>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>prace wykończeniowe</ArticleHeader>
-          <ul>
-            <li>układanie paneli podłogowych</li>
-            <li>malowanie</li>
-            <li>montaż armatury wykończeniowej</li>
-            <li>zabudowa karton-gips</li>
-            <li>zabezpieczenie miejsc pracy</li>
-          </ul>
-        </ArticleCard>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>armatura łazienkowa</ArticleHeader>
-          <ul>
-            <li>montaż armatury łazienkowej</li>
-            <li>dobór materiałów</li>
-            <li>profesjonalne doradztwo</li>
-          </ul>
-        </ArticleCard>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>aranżacja projektu</ArticleHeader>
-          <ul>
-            <li>prace pod projekt</li>
-            <li>współpraca z biurem projektowym</li>
-            <li>profesjonalne doradztwo w doborze materiałów</li>
-          </ul>
-        </ArticleCard>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>elektryka i oświetlenie</ArticleHeader>
-          <ul>
-            <li>montaż skrzyń bezpiecznikowych</li>
-            <li>montaż oświetlenia</li>
-            <li>profesjonalne doradztwo w doborze materiałów</li>
-          </ul>
-        </ArticleCard>
-        <ArticleCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-          <ArticleImage image={data.file.publicURL} alt="hero"></ArticleImage>
-          <ArticleHeader>prace hydrauliczne</ArticleHeader>
-          <ul>
-            <li>podłączanie rur wodno-kanalizacyjnych</li>
-            <li>wykuwanie bruzd i punktów</li>
-            <li>inne prace hydrauliczne</li>
-          </ul>
-        </ArticleCard>
-      </ArticleCards>
-    </Article>
-    <ActionBox>
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="center-bottom" />
-      <CrossDecoration type="right-top-fix" />
-      <CrossDecoration type="left-bottom" />
-      <CrossDecoration type="center-top" />
-      <CrossDecoration type="right-bottom-fix" />
-      <QuestionBox image={data.file.publicURL} alt="hero">
-        <QuestionBoxTitle>
-          Jesteś zainteresowany <br />
-          współpracą?
-        </QuestionBoxTitle>
-      </QuestionBox>
-      <ContactBox>
-        <ContactBoxTitle>
-          skontaktuj się <br /> z nami
-        </ContactBoxTitle>
-        <LinkNavigation type="contact-form" />
-      </ContactBox>
-    </ActionBox>
-  </Main>
-)
-
-export const query = graphql`
-  {
-    file(name: { eq: "hero2" }) {
-      publicURL
+const ServicesPage = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allServicesYaml {
+        nodes {
+          title
+          services
+        }
+      }
+      file(name: { eq: "hero2" }) {
+        publicURL
+      }
     }
-  }
-`
+  `)
+
+  return (
+    <Main>
+      <ImageWrapper image={data.file.publicURL} alt="hero">
+        <WelcomeHeader type="about" />
+        <WelcomeParagraph type="about-more" />
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="center-bottom" />
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="left-bottom" />
+        <CrossDecoration type="center-top" />
+        <CrossDecoration type="right-bottom-fix" />
+      </ImageWrapper>
+      <Article>
+        <WelcomeParagraph type="service" />
+        <WelcomeHeader type="service" />
+        <ArticleCards>
+          {data.allServicesYaml.nodes.map(item => (
+            <ArticleCard>
+              <CrossDecoration type="left-top" />
+              <CrossDecoration type="right-top" />
+              <CrossDecoration type="left-bottom" />
+              <CrossDecoration type="right-bottom" />
+              <ArticleImage
+                image={data.file.publicURL}
+                alt="hero"
+              ></ArticleImage>
+              <ArticleHeader>{item.title}</ArticleHeader>
+              <ul>
+                {item.services.map(service => (
+                  <li>{service}</li>
+                ))}
+              </ul>
+            </ArticleCard>
+          ))}
+        </ArticleCards>
+      </Article>
+      <ActionBox>
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="center-bottom" />
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="left-bottom" />
+        <CrossDecoration type="center-top" />
+        <CrossDecoration type="right-bottom-fix" />
+        <QuestionBox image={data.file.publicURL} alt="hero">
+          <QuestionBoxTitle>
+            Jesteś zainteresowany <br />
+            współpracą?
+          </QuestionBoxTitle>
+        </QuestionBox>
+        <ContactBox>
+          <ContactBoxTitle>
+            skontaktuj się <br /> z nami
+          </ContactBoxTitle>
+          <LinkNavigation type="contact-form" />
+        </ContactBox>
+      </ActionBox>
+    </Main>
+  )
+}
+
+// export const query = graphql`
+//   {
+//     file(name: { eq: "hero2" }) {
+//       publicURL
+//     }
+//   }
+// `
 
 export default ServicesPage

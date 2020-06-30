@@ -1,0 +1,44 @@
+- title: glazura i terakota
+  services:
+    [
+      "szlifowanie narożników",
+      "układanie glazury i terakoty",
+      "układanie gresu",
+    ]
+- title: prace wykończeniowe
+  services:
+    [
+      "układanie paneli podłogowych",
+      "malowanie",
+      "montaż armatury wykończeniowej",
+      "zabudowa karton-gips",
+      "zabezpieczenie miejsc pracy",
+    ]
+- title: armatura łazienkowa
+  services:
+    [
+      "montaż armatury łazienkowej",
+      "dobór materiałów",
+      "profesjonalne doradztwo",
+    ]
+- title: aranżacja projektu
+  services:
+    [
+      "prace pod projekt",
+      "współpraca z biurem projektowym",
+      "pomoc przy tworzeniu projektu",
+    ]
+- title: elektryka i oświetlenie
+  services:
+    [
+      "montaż skrzyń bezpiecznikowych",
+      "montaż oświetlenia",
+      "profesjonalne doradztwo w doborze materiałów",
+    ]
+- title: prace hydrauliczne
+  services:
+    [
+      "podłączanie rur wodno-kanalizacyjnych",
+      "wykuwanie bruzd i punktów",
+      "inne prace hydrauliczne",
+    ]
