@@ -16,8 +16,8 @@ const ImageWrapper = styled.div`
   color: ${({ theme }) => theme.colors.grey100};
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 355px;
+  justify-content: center;
   position: relative;
   margin-bottom: 50px;
   width: 100%;
@@ -41,23 +41,30 @@ const ArticleCards = styled.div`
 const ArticleCard = styled.article`
   border: solid 1px ${({ theme }) => theme.colors.grey100};
   background-color: ${({ theme }) => theme.colors.white};
-  width: 100%;
   min-height: 600px;
   position: relative;
   transition: background-color 0.5s ease-in-out;
+  width: 100%;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.grey50};
   }
 
   ul {
-    list-style: none;
     color: ${({ theme }) => theme.colors.primary};
     font-family: ${({ theme }) => theme.fontFamily.open};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
+    list-style: none;
+    margin-left: 10px;
+    padding: 0;
 
     li {
-      background-image: url("../images/tick-icon.svg");
+      align-items: center;
+      display: flex;
+    }
+
+    img {
+      margin-right: 10px;
     }
   }
 `
@@ -130,6 +137,14 @@ const ServicesPage = () => {
       file(name: { eq: "hero2" }) {
         publicURL
       }
+      allFile(filter: { extension: { eq: "svg" } }) {
+        edges {
+          node {
+            publicURL
+            name
+          }
+        }
+      }
     }
   `)
 
@@ -162,7 +177,12 @@ const ServicesPage = () => {
               <ArticleHeader>{item.title}</ArticleHeader>
               <ul>
                 {item.services.map(service => (
-                  <li>{service}</li>
+                  <li>
+                    <img
+                      src={data.allFile.edges.map(file => file.node.publicURL)}
+                    />
+                    {service}
+                  </li>
                 ))}
               </ul>
             </ArticleCard>
