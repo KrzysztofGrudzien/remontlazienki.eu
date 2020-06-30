@@ -99,10 +99,6 @@ const Header = ({ siteTitleColor }) => {
 Header.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   siteTitleColor: PropTypes.string.isRequired,
-  menuLinks: PropTypes.exact({
-    name: PropTypes.string,
-    link: PropTypes.number,
-  }),
 }
 
 Header.defaultProps = {

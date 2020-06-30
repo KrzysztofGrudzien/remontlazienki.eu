@@ -4,7 +4,7 @@ import styled from "styled-components"
 const CrossLeftTop = styled.span`
   display: inline-block;
   height: 30px;
-  left: -14px;
+  left: -15px;
   position: absolute;
   top: -15px;
   width: 30px;
@@ -57,7 +57,7 @@ const CrossRightTop = styled.span`
 `
 
 const CrossRightBottom = styled.span`
-  bottom: -15px;
+  bottom: -16px;
   display: inline-block;
   height: 30px;
   position: absolute;
@@ -88,7 +88,7 @@ const CrossLeftBottom = styled.span`
   bottom: -16px;
   display: inline-block;
   height: 30px;
-  left: -14px;
+  left: -15px;
   position: absolute;
   width: 30px;
 
@@ -171,7 +171,7 @@ const CrossCenterBottom = styled.span`
   bottom: -16px;
   display: inline-block;
   height: 30px;
-  left: calc(50% - 15px);
+  left: calc(50% - 14px);
   position: absolute;
   width: 30px;
 
@@ -198,7 +198,7 @@ const CrossCenterBottom = styled.span`
 const CrossCenterTop = styled.span`
   display: inline-block;
   height: 30px;
-  left: calc(50% - 15px);
+  left: calc(50% - 14px);
   position: absolute;
   top: -15px;
   width: 30px;
