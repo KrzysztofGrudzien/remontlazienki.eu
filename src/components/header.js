@@ -54,28 +54,33 @@ const Logo = styled.h1`
 const Header = ({ siteTitleColor }) => {
   const data = useStaticQuery(graphql`
     {
-      site {
-        siteMetadata {
-          title
-          description
-          menuLinks {
-            name
-            link
+      allMenuYaml {
+        nodes {
+          link
+          name
+        }
+      }
+      allSite {
+        nodes {
+          siteMetadata {
+            title
+            description
           }
         }
       }
     }
   `)
+
   return (
     <NavigationWrapper>
       <Logo>
         <LinkHeader to="/">
-          {data.site.siteMetadata.title.substring(0, 6)}
+          {data.allSite.nodes[0].siteMetadata.title.substring(0, 6)}
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
       <NavigationList>
-        {data.site.siteMetadata.menuLinks.map(link => (
+        {data.allMenuYaml.nodes.map(link => (
           <NavigationListItem key={link.name}>
             <Link to={link.link}>{link.name}</Link>
           </NavigationListItem>

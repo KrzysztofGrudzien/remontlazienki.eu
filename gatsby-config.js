@@ -15,6 +15,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
@@ -32,6 +33,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/data`,
       },
     },
     `gatsby-transformer-sharp`,
