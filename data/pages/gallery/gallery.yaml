@@ -1,15 +1,15 @@
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
-- image: https://cdn.pixabay.com/photo/2015/04/26/16/28/women-740661__340.jpg
+images:
+  [
+    "./łazienka-1.jpg",
+    "./łazienka-2.jpg",
+    "./łazienka-3.jpg",
+    "./łazienka-4.jpg",
+    "./łazienka-5.jpg",
+    "./łazienka-6.jpg",
+    "./łazienka-7.jpg",
+    "./łazienka-8.jpg",
+    "./łazienka-9.jpg",
+    "./łazienka-10.jpg",
+    "./łazienka-11.jpg",
+    "./łazienka-12.jpg",
+  ]
