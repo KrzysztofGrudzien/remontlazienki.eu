@@ -4,7 +4,7 @@ import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
 import styled from "styled-components"
 import CrossDecoration from "../components/crossDecoration"
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import LinkNavigation from "../components/linkNavigation"
 
 const ImageWrapper = styled.div`
@@ -27,6 +27,7 @@ const GalleryWrapper = styled.article`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  overflow: hidden;
   width: 100%;
 
   .container {
@@ -49,12 +50,20 @@ const GalleryCards = styled.div`
 `
 
 const GalleryCard = styled.div`
-  background-image: url("https://picsum.photos/200/300");
+  background-image: url(${({ image }) => image});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   height: 400px;
   position: relative;
+
+  & > span {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover > span {
+    transform: rotate(90deg);
+  }
 `
 
 const ActionBox = styled.div`
@@ -97,146 +106,70 @@ const QuestionBoxTitle = styled.h2`
 const ContactBoxTitle = styled(QuestionBoxTitle)`
   color: ${({ theme }) => theme.colors.primary};
 `
-const GalleryPage = ({ data }) => (
-  <Main>
-    <ImageWrapper image={data.file.publicURL} alt="hero">
-      <WelcomeHeader type="about" />
-      <WelcomeParagraph type="about-more" />
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="center-bottom" />
-      <CrossDecoration type="right-top-fix" />
-      <CrossDecoration type="left-bottom" />
-      <CrossDecoration type="center-top" />
-      <CrossDecoration type="right-bottom-fix" />
-    </ImageWrapper>
-    <GalleryWrapper>
-      <WelcomeParagraph type="gallery" />
-      <WelcomeHeader type="gallery" />
-      <GalleryCards>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-        <GalleryCard>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="left-bottom" />
-          <CrossDecoration type="right-bottom" />
-        </GalleryCard>
-      </GalleryCards>
-      <div className="container">
-        <LinkNavigation type="load-more" />
-      </div>
-    </GalleryWrapper>
-    <ActionBox>
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="center-bottom" />
-      <CrossDecoration type="right-top-fix" />
-      <CrossDecoration type="left-bottom" />
-      <CrossDecoration type="center-top" />
-      <CrossDecoration type="right-bottom-fix" />
-      <QuestionBox image={data.file.publicURL} alt="hero">
-        <QuestionBoxTitle>
-          Jesteś zainteresowany <br />
-          współpracą?
-        </QuestionBoxTitle>
-      </QuestionBox>
-      <ContactBox>
-        <ContactBoxTitle>
-          skontaktuj się <br /> z nami
-        </ContactBoxTitle>
-        <LinkNavigation type="contact-form" />
-      </ContactBox>
-    </ActionBox>
-  </Main>
-)
-
-export const query = graphql`
-  {
-    file(name: { eq: "hero2" }) {
-      publicURL
+const GalleryPage = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allGalleryYaml {
+        nodes {
+          image
+        }
+      }
+      file(name: { eq: "bricks" }) {
+        publicURL
+      }
     }
-  }
-`
+  `)
+  return (
+    <Main>
+      <ImageWrapper image={data.file.publicURL} alt="hero">
+        <WelcomeHeader type="about" />
+        <WelcomeParagraph type="about-more" />
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="center-bottom" />
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="left-bottom" />
+        <CrossDecoration type="center-top" />
+        <CrossDecoration type="right-bottom-fix" />
+      </ImageWrapper>
+      <GalleryWrapper>
+        <WelcomeParagraph type="gallery" />
+        <WelcomeHeader type="gallery" />
+        <GalleryCards>
+          {data.allGalleryYaml.nodes.map(item => (
+            <GalleryCard image={item.image}>
+              <CrossDecoration type="left-top" />
+              <CrossDecoration type="right-top" />
+              <CrossDecoration type="left-bottom" />
+              <CrossDecoration type="right-bottom" />
+            </GalleryCard>
+          ))}
+        </GalleryCards>
+        <div className="container">
+          <LinkNavigation type="load-more" />
+        </div>
+      </GalleryWrapper>
+      <ActionBox>
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="center-bottom" />
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="left-bottom" />
+        <CrossDecoration type="center-top" />
+        <CrossDecoration type="right-bottom-fix" />
+        <QuestionBox image={data.file.publicURL} alt="hero">
+          <QuestionBoxTitle>
+            Jesteś zainteresowany <br />
+            współpracą?
+          </QuestionBoxTitle>
+        </QuestionBox>
+        <ContactBox>
+          <ContactBoxTitle>
+            skontaktuj się <br /> z nami
+          </ContactBoxTitle>
+          <LinkNavigation type="contact-form" />
+        </ContactBox>
+      </ActionBox>
+    </Main>
+  )
+}
 
 export default GalleryPage
