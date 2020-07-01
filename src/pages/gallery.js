@@ -111,7 +111,9 @@ const GalleryPage = () => {
     {
       allGalleryYaml {
         nodes {
-          image
+          images {
+            relativePath
+          }
         }
       }
       file(name: { eq: "bricks" }) {
@@ -135,8 +137,8 @@ const GalleryPage = () => {
         <WelcomeParagraph type="gallery" />
         <WelcomeHeader type="gallery" />
         <GalleryCards>
-          {data.allGalleryYaml.nodes.map(item => (
-            <GalleryCard image={item.image}>
+          {data.allGalleryYaml.nodes[0].images.map(item => (
+            <GalleryCard image={item.relativePath}>
               <CrossDecoration type="left-top" />
               <CrossDecoration type="right-top" />
               <CrossDecoration type="left-bottom" />
