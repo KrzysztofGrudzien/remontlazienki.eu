@@ -3,13 +3,6 @@ module.exports = {
     title: `remontlazienki.eu`,
     description: `Kompleksowe remonty łazienek - od projektu łazienki, po przez remont,aż do wykończenia`,
     author: `Krzysztof Grudzień`,
-    menuLinks: [
-      { name: "home", link: "/" },
-      { name: "o nas", link: "/about" },
-      { name: "usługi", link: "/services" },
-      { name: "galeria", link: "/gallery" },
-      { name: "kontakt", link: "/contact" },
-    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
