@@ -1,5 +1,5 @@
 - title: glazura i terakota
-  image: https://cdn.pixabay.com/photo/2017/03/12/16/55/space-2137495__340.jpg
+  image: ./tails.jpg
   services:
     [
       "szlifowanie narożników",
@@ -7,7 +7,7 @@
       "układanie gresu",
     ]
 - title: prace wykończeniowe
-  image: https://cdn.pixabay.com/photo/2017/06/19/19/01/paint-2420634__340.jpg
+  image: ./paint.jpg
   services:
     [
       "układanie paneli podłogowych",
@@ -17,7 +17,7 @@
       "zabezpieczenie miejsc pracy",
     ]
 - title: armatura łazienkowa
-  image: https://cdn.pixabay.com/photo/2016/11/23/00/56/bathroom-1851566__340.jpg
+  image: ./bathroom.jpg
   services:
     [
       "montaż armatury łazienkowej",
@@ -25,7 +25,7 @@
       "profesjonalne doradztwo",
     ]
 - title: aranżacja projektu
-  image: https://cdn.pixabay.com/photo/2016/07/10/19/18/the-interior-of-the-1508271__340.jpg
+  image: ./interior.jpg
   services:
     [
       "prace pod projekt",
@@ -33,7 +33,7 @@
       "pomoc przy tworzeniu projektu",
     ]
 - title: elektryka i oświetlenie
-  image: https://cdn.pixabay.com/photo/2015/12/07/10/50/electrician-1080563__340.jpg
+  image: ./electrician.jpg
   services:
     [
       "montaż skrzyń bezpiecznikowych",
@@ -41,7 +41,7 @@
       "profesjonalne doradztwo w doborze materiałów",
     ]
 - title: prace hydrauliczne
-  image: https://cdn.pixabay.com/photo/2017/09/26/11/10/plumber-2788332__340.jpg
+  image: ./plumber.jpg
   services:
     [
       "podłączanie rur wodno-kanalizacyjnych",
