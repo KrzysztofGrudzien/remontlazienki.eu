@@ -27,6 +27,7 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  overflow: hidden;
   width: 100%;
 `
 
@@ -48,6 +49,14 @@ const ArticleCard = styled.article`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.grey50};
+  }
+
+  & > span {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover > span {
+    transform: rotate(90deg);
   }
 
   ul {
