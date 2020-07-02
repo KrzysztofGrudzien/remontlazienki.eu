@@ -121,9 +121,15 @@ const GalleryPage = () => {
       }
     }
   `)
+  const randomNumber = Math.floor(
+    Math.random() * data.allGalleryYaml.nodes[0].images.length
+  )
   return (
     <Main>
-      <ImageWrapper image={data.file.publicURL} alt="hero">
+      <ImageWrapper
+        image={data.allGalleryYaml.nodes[0].images[randomNumber].relativePath}
+        alt="hero"
+      >
         <WelcomeHeader type="about" />
         <WelcomeParagraph type="about-more" />
         <CrossDecoration type="left-top" />
