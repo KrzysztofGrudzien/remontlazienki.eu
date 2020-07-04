@@ -75,7 +75,23 @@ const NavigationListItem = styled.li`
   a {
     color: ${({ theme }) => theme.colors.primary};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
+    position: relative;
     text-decoration: none;
+
+    &::before {
+      background-color: ${({ theme }) => theme.colors.primary};
+      bottom: -3px;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: width 0.3s ease-in-out;
+      width: 0;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
   }
 
   @media (max-width: 850px) {
