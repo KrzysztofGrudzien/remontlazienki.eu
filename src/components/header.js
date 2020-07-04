@@ -29,19 +29,69 @@ const NavigationList = styled.ul`
   list-style: none;
   margin: 0 20px 0 0;
 
-  a {
-    color: ${({ theme }) => theme.colors.primary};
-    font-weight: ${({ theme }) => theme.fontWeight.medium};
-    text-decoration: none;
+  @media (max-width: 850px) {
+    background-color: ${({ theme }) => theme.colors.grey50};
+    flex-direction: column;
+    height: calc(100vh - 103px);
+    justify-content: space-evenly;
+    position: fixed;
+    top: 103px;
+    width: 100%;
+    z-index: 1000;
   }
 `
+
+const NavigationButton = styled.button`
+  border: none;
+  border-top: solid 1px ${({ theme }) => theme.colors.primary};
+  border-bottom: solid 1px ${({ theme }) => theme.colors.primary};
+  background: none;
+  cursor: pointer;
+  height: 19px;
+  margin-right: 20px;
+  position: relative;
+  width: 30px;
+
+  &::before {
+    background-color: ${({ theme }) => theme.colors.primary};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+    width: 30px;
+  }
+
+  @media (min-width: 851px) {
+    display: none;
+  }
+`
+
 const NavigationListItem = styled.li`
   margin-right: 34px;
   margin-bottom: 0;
   text-transform: lowercase;
 
+  a {
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    text-decoration: none;
+  }
+
+  @media (max-width: 850px) {
+    font-size: ${({ theme }) => theme.fontSize.l};
+    font-weight: ${({ theme }) => theme.fontWeight.light};
+    margin-right: 0;
+  }
+
   &:last-child {
     margin-right: 20px;
+  }
+
+  a {
+    @media (max-width: 850px) {
+      font-weight: ${({ theme }) => theme.fontWeight.light};
+    }
   }
 `
 const Logo = styled.h1`
@@ -79,6 +129,7 @@ const Header = ({ siteTitleColor }) => {
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
+      <NavigationButton />
       <NavigationList>
         {data.allMenuYaml.nodes.map(link => (
           <NavigationListItem key={link.name}>
