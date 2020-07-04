@@ -1,15 +1,15 @@
-images:
-  [
-    "./łazienka-1.jpg",
-    "./łazienka-2.jpg",
-    "./łazienka-3.jpg",
-    "./łazienka-4.jpg",
-    "./łazienka-5.jpg",
-    "./łazienka-6.jpg",
-    "./łazienka-7.jpg",
-    "./łazienka-8.jpg",
-    "./łazienka-9.jpg",
-    "./łazienka-10.jpg",
-    "./łazienka-11.jpg",
-    "./łazienka-12.jpg",
-  ]
+- images:
+    [
+      image: ./łazienka-1.jpg,
+      image: ./łazienka-2.jpg,
+      image: ./łazienka-3.jpg,
+      image: ./łazienka-4.jpg,
+      image: ./łazienka-5.jpg,
+      image: ./łazienka-6.jpg,
+      image: ./łazienka-7.jpg,
+      image: ./łazienka-8.jpg,
+      image: ./łazienka-9.jpg,
+      image: ./łazienka-10.jpg,
+      image: ./łazienka-11.jpg,
+      image: ./łazienka-12.jpg,
+    ]
