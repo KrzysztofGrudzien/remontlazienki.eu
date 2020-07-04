@@ -205,7 +205,7 @@ const ContactPage = ({ data }) => (
 
 export const query = graphql`
   {
-    file(name: { eq: "hero2" }) {
+    file(name: { eq: "bricks" }) {
       publicURL
     }
   }

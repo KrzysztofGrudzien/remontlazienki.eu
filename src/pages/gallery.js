@@ -55,7 +55,13 @@ const GalleryCard = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   height: 400px;
+  filter: grayscale();
   position: relative;
+  transition: filter 0.3s ease-in-out;
+
+  &:hover {
+    filter: none;
+  }
 
   & > span {
     transition: transform 0.3s ease-in-out;
@@ -112,7 +118,9 @@ const GalleryPage = () => {
       allGalleryYaml {
         nodes {
           images {
-            relativePath
+            image {
+              publicURL
+            }
           }
         }
       }
@@ -127,7 +135,9 @@ const GalleryPage = () => {
   return (
     <Main>
       <ImageWrapper
-        image={data.allGalleryYaml.nodes[0].images[randomNumber].relativePath}
+        image={
+          data.allGalleryYaml.nodes[0].images[randomNumber].image.publicURL
+        }
         alt="hero"
       >
         <WelcomeHeader type="about" />
@@ -144,7 +154,7 @@ const GalleryPage = () => {
         <WelcomeHeader type="gallery" />
         <GalleryCards>
           {data.allGalleryYaml.nodes[0].images.map(item => (
-            <GalleryCard image={item.relativePath}>
+            <GalleryCard image={item.image.publicURL}>
               <CrossDecoration type="left-top" />
               <CrossDecoration type="right-top" />
               <CrossDecoration type="left-bottom" />

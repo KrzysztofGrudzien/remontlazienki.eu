@@ -140,7 +140,7 @@ const ServicesPage = () => {
       allServicesYaml {
         nodes {
           image {
-            relativePath
+            publicURL
           }
           title
           services
@@ -182,10 +182,7 @@ const ServicesPage = () => {
               <CrossDecoration type="right-top" />
               <CrossDecoration type="left-bottom" />
               <CrossDecoration type="right-bottom" />
-              <ArticleImage
-                image={item.image.relativePath}
-                alt="hero"
-              ></ArticleImage>
+              <ArticleImage image={item.image.publicURL} alt="hero" />
               <ArticleHeader>{item.title}</ArticleHeader>
               <ul>
                 {item.services.map(service => (
