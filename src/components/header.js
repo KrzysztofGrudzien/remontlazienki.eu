@@ -18,6 +18,9 @@ const LinkHeader = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
 `
+const activeStyles = {
+  borderBottom: "1px solid hsl(0,0%,12.5%)",
+}
 
 const LinkHeaderColor = styled(LinkHeader)`
   color: ${({ theme }) => theme.colors.secondary};
@@ -149,7 +152,9 @@ const Header = ({ siteTitleColor }) => {
       <NavigationList>
         {data.allMenuYaml.nodes.map(link => (
           <NavigationListItem key={link.name}>
-            <Link to={link.link}>{link.name}</Link>
+            <Link to={link.link} activeStyle={activeStyles}>
+              {link.name}
+            </Link>
           </NavigationListItem>
         ))}
         <label>
