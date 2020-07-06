@@ -1,6 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 const NavigationWrapper = styled.nav`
@@ -31,38 +31,61 @@ const NavigationList = styled.ul`
   justify-content: space-between;
   list-style: none;
   margin: 0 20px 0 0;
+  position: relative;
 
   @media (max-width: 850px) {
     background-color: ${({ theme }) => theme.colors.grey50};
     flex-direction: column;
-    height: calc(100vh - 103px);
+    height: 100vh;
     justify-content: space-evenly;
     position: fixed;
-    top: 103px;
+    top: 0;
     width: 100%;
     z-index: 1000;
   }
 `
 
 const NavigationButton = styled.button`
-  border: none;
-  border-top: solid 1px ${({ theme }) => theme.colors.primary};
-  border-bottom: solid 1px ${({ theme }) => theme.colors.primary};
+  align-items: center;
   background: none;
+  border: none;
   cursor: pointer;
-  height: 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
   margin-right: 20px;
-  position: relative;
-  width: 30px;
+  position: fixed;
+  right: 0;
+  width: 50px;
+  z-index: 10000;
 
-  &::before {
+  span {
     background-color: ${({ theme }) => theme.colors.primary};
-    content: "";
+    display: block;
     height: 1px;
-    left: 0;
-    position: absolute;
-    top: 8px;
+    position: relative;
     width: 30px;
+
+    &::before {
+      background-color: ${({ theme }) => theme.colors.primary};
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      top: 8px;
+      width: 100%;
+    }
+
+    &::after {
+      background-color: ${({ theme }) => theme.colors.primary};
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+    }
   }
 
   @media (min-width: 851px) {
@@ -121,6 +144,8 @@ const Logo = styled.h1`
   margin-left: 20px;
 `
 const Header = ({ siteTitleColor }) => {
+  const [hidden, setHidden] = useState(true)
+
   const data = useStaticQuery(graphql`
     {
       allMenuYaml {
@@ -148,22 +173,30 @@ const Header = ({ siteTitleColor }) => {
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
-      <NavigationButton />
-      <NavigationList>
-        {data.allMenuYaml.nodes.map(link => (
-          <NavigationListItem key={link.name}>
-            <Link to={link.link} activeStyle={activeStyles}>
-              {link.name}
-            </Link>
-          </NavigationListItem>
-        ))}
-        <label>
-          <select name="language" id="language">
-            <option value="pl">PL</option>
-            <option value="en">EN</option>
-          </select>
-        </label>
-      </NavigationList>
+      <NavigationButton onClick={() => setHidden(!hidden)}>
+        <span></span>
+      </NavigationButton>
+      {hidden && (
+        <NavigationList>
+          {data.allMenuYaml.nodes.map(link => (
+            <NavigationListItem key={link.name}>
+              <Link
+                to={link.link}
+                activeStyle={activeStyles}
+                onClick={() => setHidden(!hidden)}
+              >
+                {link.name}
+              </Link>
+            </NavigationListItem>
+          ))}
+          <label>
+            <select name="language" id="language">
+              <option value="pl">PL</option>
+              <option value="en">EN</option>
+            </select>
+          </label>
+        </NavigationList>
+      )}
     </NavigationWrapper>
   )
 }
