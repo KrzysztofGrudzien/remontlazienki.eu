@@ -25,23 +25,34 @@ const activeStyles = {
 const LinkHeaderColor = styled(LinkHeader)`
   color: ${({ theme }) => theme.colors.secondary};
 `
-const NavigationList = styled.ul`
+const DesktopNavigationList = styled.ul`
   align-items: center;
   display: flex;
   justify-content: space-between;
   list-style: none;
-  margin: 0 20px 0 0;
+  margin: 0;
   position: relative;
+  @media (max-width: 851px) {
+    display: none;
+  }
+`
 
-  @media (max-width: 850px) {
-    background-color: ${({ theme }) => theme.colors.grey50};
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-evenly;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+const MobileNavigationList = styled.ul`
+  align-items: center;
+  display: flex;
+  list-style: none;
+  background-color: ${({ theme }) => theme.colors.grey50};
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-evenly;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  @media (min-width: 850px) {
+    display: none;
   }
 `
 
@@ -88,7 +99,7 @@ const NavigationButton = styled.button`
     }
   }
 
-  @media (min-width: 851px) {
+  @media (min-width: 850px) {
     display: none;
   }
 `
@@ -173,29 +184,48 @@ const Header = ({ siteTitleColor }) => {
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
+      <DesktopNavigationList>
+        {data.allMenuYaml.nodes.map(link => (
+          <NavigationListItem key={link.name}>
+            <Link
+              to={link.link}
+              activeStyle={activeStyles}
+              onClick={() => setHidden(hidden)}
+            >
+              {link.name}
+            </Link>
+          </NavigationListItem>
+        ))}
+        {/* <label>
+          <select name="language" id="language">
+            <option value="pl">PL</option>
+            <option value="en">EN</option>
+          </select>
+        </label> */}
+      </DesktopNavigationList>
       <NavigationButton onClick={() => setHidden(!hidden)}>
         <span></span>
       </NavigationButton>
-      {hidden && (
-        <NavigationList>
+      {!hidden && (
+        <MobileNavigationList>
           {data.allMenuYaml.nodes.map(link => (
             <NavigationListItem key={link.name}>
               <Link
                 to={link.link}
                 activeStyle={activeStyles}
-                onClick={() => setHidden(!hidden)}
+                onClick={() => setHidden(hidden)}
               >
                 {link.name}
               </Link>
             </NavigationListItem>
           ))}
-          <label>
+          {/* <label>
             <select name="language" id="language">
               <option value="pl">PL</option>
               <option value="en">EN</option>
             </select>
-          </label>
-        </NavigationList>
+          </label> */}
+        </MobileNavigationList>
       )}
     </NavigationWrapper>
   )
