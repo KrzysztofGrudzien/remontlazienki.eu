@@ -213,7 +213,7 @@ const Header = ({ siteTitleColor }) => {
               <Link
                 to={link.link}
                 activeStyle={activeStyles}
-                onClick={() => setHidden(hidden)}
+                onClick={() => setHidden(!hidden)}
               >
                 {link.name}
               </Link>
