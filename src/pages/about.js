@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import Main from "../components/main"
 import styled, { css } from "styled-components"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
@@ -51,36 +51,68 @@ const ButtonGallery = styled.button`
       left: 25px;
     `}
 `
-const AboutPage = ({ data }) => (
-  <Main color>
-    <Article>
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="right-top" />
-      <CrossDecoration type="right-bottom" />
-      <CrossDecoration type="left-bottom" />
-      <WelcomeParagraph type="about" />
-      <WelcomeHeader type="about" />
-      <ArticleParagraph type="about" />
-      <LinkNavigation type="service" />
-    </Article>
-    <GalleryWrapper>
-      <Image image={data.file.publicURL} alt="hero">
-        <CrossDecoration type="right-top-fix" />
-        <CrossDecoration type="right-bottom-fix" />
-        <ButtonGallery prev>&#10094;</ButtonGallery>
-        <ButtonGallery>&#10095;</ButtonGallery>
-      </Image>
-      <LinkNavigation type="gallery" />
-    </GalleryWrapper>
-  </Main>
-)
-
-export const query = graphql`
-  {
-    file(name: { eq: "hero2" }) {
-      publicURL
+const AboutPage = () => {
+  const [counter, setCounter] = useState(0)
+  const data = useStaticQuery(graphql`
+    {
+      allGalleryYaml {
+        nodes {
+          images {
+            image {
+              publicURL
+            }
+          }
+        }
+      }
     }
-  }
-`
+  `)
+  return (
+    <Main color>
+      <Article>
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="right-top" />
+        <CrossDecoration type="right-bottom" />
+        <CrossDecoration type="left-bottom" />
+        <WelcomeParagraph type="about" />
+        <WelcomeHeader type="about" />
+        <ArticleParagraph type="about" />
+        <LinkNavigation type="service" />
+      </Article>
+      <GalleryWrapper>
+        {counter > 11 || counter < 0 ? (
+          <Image
+            image={data.allGalleryYaml.nodes[0].images[0].image.publicURL}
+            alt="hero"
+          >
+            <CrossDecoration type="right-top-fix" />
+            <CrossDecoration type="right-bottom-fix" />
+            <ButtonGallery prev onClick={() => setCounter(11)}>
+              &#10094;
+            </ButtonGallery>
+            <ButtonGallery onClick={() => setCounter(1)}>
+              &#10095;
+            </ButtonGallery>
+          </Image>
+        ) : (
+          <Image
+            image={data.allGalleryYaml.nodes[0].images[counter].image.publicURL}
+            alt="hero"
+          >
+            <CrossDecoration type="right-top-fix" />
+            <CrossDecoration type="right-bottom-fix" />
+            <ButtonGallery prev onClick={() => setCounter(counter - 1)}>
+              &#10094;
+            </ButtonGallery>
+            <ButtonGallery onClick={() => setCounter(counter + 1)}>
+              &#10095;
+            </ButtonGallery>
+          </Image>
+        )}
+
+        <LinkNavigation type="gallery" />
+      </GalleryWrapper>
+    </Main>
+  )
+}
 
 export default AboutPage
