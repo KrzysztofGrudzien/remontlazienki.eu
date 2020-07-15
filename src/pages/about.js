@@ -1,31 +1,41 @@
-import React from "react"
+import React, { useState } from "react"
 import Main from "../components/main"
 import styled, { css } from "styled-components"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
 import ArticleParagraph from "../components/articleParagraph"
 import CrossDecoration from "../components/crossDecoration"
+import ImgSlider from "../components/imgSlider"
 
 const GalleryWrapper = styled.div`
   align-items: flex-start;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
   position: relative;
   padding: 20px;
   width: 50%;
 `
 const Image = styled.div`
-  background-image: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 60%;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.grey50};
+  display: flex;
+  height: 60vh;
   margin: 20px 0;
+  overflow: hidden;
+  position: relative;
   width: 100%;
+
+  .slide {
+    height: 100%;
+    min-width: 100%;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
 `
 
 const ButtonGallery = styled.button`
@@ -36,7 +46,6 @@ const ButtonGallery = styled.button`
   font-size: ${({ theme }) => theme.fontSize.mml};
   height: 50px;
   position: absolute;
-  top: calc(50% - 50px);
   transition: background-color 0.3s linear;
   right: 25px;
   width: 50px;
@@ -51,36 +60,74 @@ const ButtonGallery = styled.button`
       left: 25px;
     `}
 `
-const AboutPage = ({ data }) => (
-  <Main color>
-    <Article>
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="right-top" />
-      <CrossDecoration type="right-bottom" />
-      <CrossDecoration type="left-bottom" />
-      <WelcomeParagraph type="about" />
-      <WelcomeHeader type="about" />
-      <ArticleParagraph type="about" />
-      <LinkNavigation type="service" />
-    </Article>
-    <GalleryWrapper>
-      <Image image={data.file.publicURL} alt="hero">
+const AboutPage = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allGalleryYaml {
+        nodes {
+          images {
+            image {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const sliderImages = [
+    ...data.allGalleryYaml.nodes[0].images.map(item => {
+      return <ImgSlider src={item.image.publicURL} />
+    }),
+  ]
+  const [posX, setPosX] = useState(0)
+
+  const slideLeft = () => {
+    posX === 0 ? setPosX(-100 * (sliderImages.length - 1)) : setPosX(posX + 100)
+    console.log(posX)
+  }
+
+  const slideRight = () => {
+    posX === -100 * (sliderImages.length - 1) ? setPosX(0) : setPosX(posX - 100)
+    console.log(posX)
+  }
+
+  return (
+    <Main color>
+      <Article>
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="right-top" />
+        <CrossDecoration type="right-bottom" />
+        <CrossDecoration type="left-bottom" />
+        <WelcomeParagraph type="about" />
+        <WelcomeHeader type="about" />
+        <ArticleParagraph type="about" />
+        <LinkNavigation type="service" />
+      </Article>
+      <GalleryWrapper>
         <CrossDecoration type="right-top-fix" />
         <CrossDecoration type="right-bottom-fix" />
-        <ButtonGallery prev>&#10094;</ButtonGallery>
-        <ButtonGallery>&#10095;</ButtonGallery>
-      </Image>
-      <LinkNavigation type="gallery" />
-    </GalleryWrapper>
-  </Main>
-)
-
-export const query = graphql`
-  {
-    file(name: { eq: "hero2" }) {
-      publicURL
-    }
-  }
-`
+        <Image>
+          {sliderImages.map((slide, index) => {
+            return (
+              <div
+                key={index}
+                className="slide"
+                style={{ transform: `translateX(${posX}%) ` }}
+              >
+                {slide}
+              </div>
+            )
+          })}
+          <ButtonGallery prev onClick={slideLeft}>
+            &#10094;
+          </ButtonGallery>
+          <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
+        </Image>
+        <LinkNavigation type="gallery" />
+      </GalleryWrapper>
+    </Main>
+  )
+}
 
 export default AboutPage
