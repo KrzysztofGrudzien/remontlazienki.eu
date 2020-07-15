@@ -8,8 +8,7 @@ import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
 import ArticleParagraph from "../components/articleParagraph"
 import CrossDecoration from "../components/crossDecoration"
-import img1 from "../assets/images/hero.jpg"
-import img2 from "../assets/images/hero2.jpg"
+import ImgSlider from "../components/imgSlider"
 
 const GalleryWrapper = styled.div`
   align-items: flex-start;
@@ -18,40 +17,35 @@ const GalleryWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   position: relative;
-  overflow: hidden;
   padding: 20px;
   width: 50%;
 `
 const Image = styled.div`
-align-items: center;
-  /* background-image: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; */
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.grey50};
   display: flex;
-  height: 60%;
+  height: 60vh;
   margin: 20px 0;
   overflow: hidden;
   position: relative;
   width: 100%;
-  
+
   .slide {
     height: 100%;
     min-width: 100%;
-    transition: all .3s ease-in-out;  
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
   }
 `
 
 const ButtonGallery = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.grey200};
+  color: ${({ theme }) => theme.colors.grey50};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.mml};
   height: 50px;
   position: absolute;
-  top: calc(50% - 50px);
   transition: background-color 0.3s linear;
   right: 25px;
   width: 50px;
@@ -66,33 +60,7 @@ const ButtonGallery = styled.button`
       left: 25px;
     `}
 `
-function Img({ src }) {
-  let imgStyles = {
-    width: "auto",
-    height: 100 + "%",
-  }
-  return <img src={src} alt="slide image" style={imgStyles} />
-}
 const AboutPage = () => {
-  const sliders = [
-    <Img src={img1} />,
-    <Img src={img2} />,
-    <Img src={img1} />,
-    <Img src={img2} />,
-    <Img src={img1} />,
-  ]
-  const [posX, setPosX] = useState(0)
-
-  const slideLeft = () => {
-    posX === 0 ? setPosX(-100 * (sliders.length - 1)) : setPosX(posX + 100)
-    console.log(posX)
-  }
-
-  const slideRight = () => {
-    posX === -100 * (sliders.length - 1) ? setPosX(0) : setPosX(posX - 100)
-    console.log(posX)
-  }
-
   const data = useStaticQuery(graphql`
     {
       allGalleryYaml {
@@ -106,6 +74,24 @@ const AboutPage = () => {
       }
     }
   `)
+
+  const sliderImages = [
+    ...data.allGalleryYaml.nodes[0].images.map(item => {
+      return <ImgSlider src={item.image.publicURL} />
+    }),
+  ]
+  const [posX, setPosX] = useState(0)
+
+  const slideLeft = () => {
+    posX === 0 ? setPosX(-100 * (sliderImages.length - 1)) : setPosX(posX + 100)
+    console.log(posX)
+  }
+
+  const slideRight = () => {
+    posX === -100 * (sliderImages.length - 1) ? setPosX(0) : setPosX(posX - 100)
+    console.log(posX)
+  }
+
   return (
     <Main color>
       <Article>
@@ -119,49 +105,20 @@ const AboutPage = () => {
         <LinkNavigation type="service" />
       </Article>
       <GalleryWrapper>
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="right-bottom-fix" />
         <Image>
-          {sliders.map((slide, index) => {
+          {sliderImages.map((slide, index) => {
             return (
               <div
                 key={index}
                 className="slide"
                 style={{ transform: `translateX(${posX}%) ` }}
               >
-                {" "}
                 {slide}
               </div>
             )
           })}
-
-          {/* {counter > 11 || counter < 0 ? (
-          <Image
-            image={data.allGalleryYaml.nodes[0].images[0].image.publicURL}
-            alt="hero"
-          >
-            <CrossDecoration type="right-top-fix" />
-            <CrossDecoration type="right-bottom-fix" />
-            <ButtonGallery prev onClick={() => setCounter(11)}>
-              &#10094;
-            </ButtonGallery>
-            <ButtonGallery onClick={() => setCounter(0)}>
-              &#10095;
-            </ButtonGallery>
-          </Image>
-        ) : (
-          <Image
-            image={data.allGalleryYaml.nodes[0].images[counter].image.publicURL}
-            alt="hero"
-          >
-            <CrossDecoration type="right-top-fix" />
-            <CrossDecoration type="right-bottom-fix" />
-            <ButtonGallery prev onClick={() => setCounter(counter - 1)}>
-              &#10094;
-            </ButtonGallery>
-            <ButtonGallery onClick={() => setCounter(counter + 1)}>
-              &#10095;
-            </ButtonGallery>
-          </Image>
-        )} */}
           <ButtonGallery prev onClick={slideLeft}>
             &#10094;
           </ButtonGallery>
