@@ -8,30 +8,45 @@ import WelcomeParagraph from "../components/welcomeParagraph"
 import WelcomeHeader from "../components/welcomeHeader"
 import ArticleParagraph from "../components/articleParagraph"
 import CrossDecoration from "../components/crossDecoration"
+import img1 from "../assets/images/hero.jpg"
+import img2 from "../assets/images/hero2.jpg"
 
 const GalleryWrapper = styled.div`
   align-items: flex-start;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
   position: relative;
+  overflow: hidden;
   padding: 20px;
   width: 50%;
 `
 const Image = styled.div`
-  background-image: url(${({ image }) => image});
+align-items: center;
+  /* background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: cover; */
+  background-color: ${({ theme }) => theme.colors.grey50};
+  display: flex;
   height: 60%;
   margin: 20px 0;
+  overflow: hidden;
+  position: relative;
   width: 100%;
+  
+  .slide {
+    height: 100%;
+    min-width: 100%;
+    transition: all .3s ease-in-out;  
+  }
 `
 
 const ButtonGallery = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.grey50};
+  color: ${({ theme }) => theme.colors.grey200};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.mml};
   height: 50px;
@@ -51,8 +66,33 @@ const ButtonGallery = styled.button`
       left: 25px;
     `}
 `
+function Img({ src }) {
+  let imgStyles = {
+    width: "auto",
+    height: 100 + "%",
+  }
+  return <img src={src} alt="slide image" style={imgStyles} />
+}
 const AboutPage = () => {
-  const [counter, setCounter] = useState(0)
+  const sliders = [
+    <Img src={img1} />,
+    <Img src={img2} />,
+    <Img src={img1} />,
+    <Img src={img2} />,
+    <Img src={img1} />,
+  ]
+  const [posX, setPosX] = useState(0)
+
+  const slideLeft = () => {
+    posX === 0 ? setPosX(-100 * (sliders.length - 1)) : setPosX(posX + 100)
+    console.log(posX)
+  }
+
+  const slideRight = () => {
+    posX === -100 * (sliders.length - 1) ? setPosX(0) : setPosX(posX - 100)
+    console.log(posX)
+  }
+
   const data = useStaticQuery(graphql`
     {
       allGalleryYaml {
@@ -79,7 +119,21 @@ const AboutPage = () => {
         <LinkNavigation type="service" />
       </Article>
       <GalleryWrapper>
-        {counter > 11 || counter < 0 ? (
+        <Image>
+          {sliders.map((slide, index) => {
+            return (
+              <div
+                key={index}
+                className="slide"
+                style={{ transform: `translateX(${posX}%) ` }}
+              >
+                {" "}
+                {slide}
+              </div>
+            )
+          })}
+
+          {/* {counter > 11 || counter < 0 ? (
           <Image
             image={data.allGalleryYaml.nodes[0].images[0].image.publicURL}
             alt="hero"
@@ -89,7 +143,7 @@ const AboutPage = () => {
             <ButtonGallery prev onClick={() => setCounter(11)}>
               &#10094;
             </ButtonGallery>
-            <ButtonGallery onClick={() => setCounter(1)}>
+            <ButtonGallery onClick={() => setCounter(0)}>
               &#10095;
             </ButtonGallery>
           </Image>
@@ -107,8 +161,12 @@ const AboutPage = () => {
               &#10095;
             </ButtonGallery>
           </Image>
-        )}
-
+        )} */}
+          <ButtonGallery prev onClick={slideLeft}>
+            &#10094;
+          </ButtonGallery>
+          <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
+        </Image>
         <LinkNavigation type="gallery" />
       </GalleryWrapper>
     </Main>
