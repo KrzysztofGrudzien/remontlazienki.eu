@@ -43,7 +43,8 @@ const MobileNavigationList = styled.ul`
   list-style: none;
   background-color: ${({ theme }) => theme.colors.grey50};
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   justify-content: space-evenly;
   margin: 0;
   position: fixed;
