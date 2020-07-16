@@ -9,6 +9,15 @@ const ArticleDescription = styled.article`
   padding: 20px;
   position: relative;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
+
+  a {
+    @media (max-width: 850px) {
+      align-self: flex-end;
+    }
+  }
 `
 const Article = ({ children }) => (
   <ArticleDescription>{children}</ArticleDescription>

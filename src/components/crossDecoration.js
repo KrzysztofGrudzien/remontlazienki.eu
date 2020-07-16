@@ -8,6 +8,9 @@ const CrossLeftTop = styled.span`
   position: absolute;
   top: -15px;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -35,6 +38,9 @@ const CrossRightTop = styled.span`
   position: absolute;
   top: -15px;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -63,6 +69,9 @@ const CrossRightBottom = styled.span`
   position: absolute;
   right: -16px;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -91,6 +100,9 @@ const CrossLeftBottom = styled.span`
   left: -15px;
   position: absolute;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -118,6 +130,9 @@ const CrossRightTopFix = styled.span`
   right: 0;
   position: absolute;
   width: 15px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -146,6 +161,9 @@ const CrossRightBottomFix = styled.span`
   right: 0;
   position: absolute;
   width: 15px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -174,6 +192,9 @@ const CrossCenterBottom = styled.span`
   left: calc(50% - 14px);
   position: absolute;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -202,6 +223,9 @@ const CrossCenterTop = styled.span`
   position: absolute;
   top: -15px;
   width: 30px;
+  @media (max-width: 850px) {
+    display: none;
+  }
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};

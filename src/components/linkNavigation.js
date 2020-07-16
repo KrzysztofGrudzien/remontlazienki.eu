@@ -22,6 +22,9 @@ const InternalLink = styled(Link)`
     height: 1px;
     position: absolute;
     right: -80px;
+    @media (max-width: 850px) {
+      left: -80px;
+    }
     top: 50%;
     transition: all 0.3s linear;
     width: 80%;
@@ -29,6 +32,9 @@ const InternalLink = styled(Link)`
 
   &:hover::before {
     right: 0;
+    @media (max-width: 850px) {
+      left: 0;
+    }
     width: 0;
   }
 

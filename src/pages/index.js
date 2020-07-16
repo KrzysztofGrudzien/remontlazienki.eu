@@ -14,26 +14,41 @@ const ImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  height: 100%;
   position: relative;
   width: 50%;
-  height: 100%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
+
+const BoxWrapper = styled.div`
+  display: flex;
+  @media (max-width: 850px) {
+    flex-direction: column-reverse;
+  }
+  height: 100%;
+  width: 100%;
+`
+
 const IndexPage = ({ data }) => (
   <Main color>
-    <Article>
-      <CrossDecoration type="left-top" />
-      <CrossDecoration type="right-top" />
-      <CrossDecoration type="right-bottom" />
-      <CrossDecoration type="left-bottom" />
-      <WelcomeParagraph />
-      <WelcomeHeader />
-      <ArticleParagraph />
-      <LinkNavigation />
-    </Article>
-    <ImageWrapper image={data.file.publicURL} alt="hero">
-      <CrossDecoration type="right-top-fix" />
-      <CrossDecoration type="right-bottom-fix" />
-    </ImageWrapper>
+    <BoxWrapper>
+      <Article>
+        <CrossDecoration type="left-top" />
+        <CrossDecoration type="right-top" />
+        <CrossDecoration type="right-bottom" />
+        <CrossDecoration type="left-bottom" />
+        <WelcomeParagraph />
+        <WelcomeHeader />
+        <ArticleParagraph />
+        <LinkNavigation />
+      </Article>
+      <ImageWrapper image={data.file.publicURL} alt="hero">
+        <CrossDecoration type="right-top-fix" />
+        <CrossDecoration type="right-bottom-fix" />
+      </ImageWrapper>
+    </BoxWrapper>
   </Main>
 )
 
