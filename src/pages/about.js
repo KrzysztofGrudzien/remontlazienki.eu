@@ -19,7 +19,20 @@ const GalleryWrapper = styled.div`
   position: relative;
   padding: 20px;
   width: 50%;
+  @media (max-width: 850px) {
+    padding: 0;
+    width: 100%;
+  }
 `
+
+const BoxWrapper = styled.div`
+  display: flex;
+  @media (max-width: 850px) {
+    flex-direction: column-reverse;
+  }
+  width: 100%;
+`
+
 const Image = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.grey50};
@@ -29,6 +42,10 @@ const Image = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
+  @media (max-width: 850px) {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 
   .slide {
     height: 100%;
@@ -94,38 +111,40 @@ const AboutPage = () => {
 
   return (
     <Main color>
-      <Article>
-        <CrossDecoration type="left-top" />
-        <CrossDecoration type="right-top" />
-        <CrossDecoration type="right-bottom" />
-        <CrossDecoration type="left-bottom" />
-        <WelcomeParagraph type="about" />
-        <WelcomeHeader type="about" />
-        <ArticleParagraph type="about" />
-        <LinkNavigation type="service" />
-      </Article>
-      <GalleryWrapper>
-        <CrossDecoration type="right-top-fix" />
-        <CrossDecoration type="right-bottom-fix" />
-        <Image>
-          {sliderImages.map((slide, index) => {
-            return (
-              <div
-                key={index}
-                className="slide"
-                style={{ transform: `translateX(${posX}%) ` }}
-              >
-                {slide}
-              </div>
-            )
-          })}
-          <ButtonGallery prev onClick={slideLeft}>
-            &#10094;
-          </ButtonGallery>
-          <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
-        </Image>
-        <LinkNavigation type="gallery" />
-      </GalleryWrapper>
+      <BoxWrapper>
+        <Article>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="right-top" />
+          <CrossDecoration type="right-bottom" />
+          <CrossDecoration type="left-bottom" />
+          <WelcomeParagraph type="about" />
+          <WelcomeHeader type="about" />
+          <ArticleParagraph type="about" />
+          <LinkNavigation type="service" />
+        </Article>
+        <GalleryWrapper>
+          <CrossDecoration type="right-top-fix" />
+          <CrossDecoration type="right-bottom-fix" />
+          <Image>
+            {sliderImages.map((slide, index) => {
+              return (
+                <div
+                  key={index}
+                  className="slide"
+                  style={{ transform: `translateX(${posX}%) ` }}
+                >
+                  {slide}
+                </div>
+              )
+            })}
+            <ButtonGallery prev onClick={slideLeft}>
+              &#10094;
+            </ButtonGallery>
+            <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
+          </Image>
+          <LinkNavigation type="gallery" />
+        </GalleryWrapper>
+      </BoxWrapper>
     </Main>
   )
 }

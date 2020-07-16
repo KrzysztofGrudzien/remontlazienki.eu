@@ -47,6 +47,15 @@ const GalleryCards = styled.div`
   grid-template-rows: repeat(2, 1fr);
   margin-top: 20px;
   z-index: 100;
+  @media (max-width: 1600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 const GalleryCard = styled.div`
@@ -79,6 +88,9 @@ const ActionBox = styled.div`
   margin: 20px 0;
   position: relative;
   width: 100%;
+  @media (max-width: 850px) {
+    flex-direction: column;
+  }
 `
 
 const QuestionBox = styled.div`
@@ -88,6 +100,9 @@ const QuestionBox = styled.div`
   background-size: cover;
   height: 100%;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const ContactBox = styled.article`
@@ -97,6 +112,9 @@ const ContactBox = styled.article`
   flex-direction: column;
   height: 100%;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const QuestionBoxTitle = styled.h2`

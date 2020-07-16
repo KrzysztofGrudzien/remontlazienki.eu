@@ -37,6 +37,13 @@ const ArticleCards = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin-top: 20px;
+  @media (max-width: 1200px) {
+    grid-gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 const ArticleCard = styled.article`
@@ -100,6 +107,9 @@ const ActionBox = styled.div`
   margin: 20px 0;
   position: relative;
   width: 100%;
+  @media (max-width: 850px) {
+    flex-direction: column;
+  }
 `
 
 const QuestionBox = styled.div`
@@ -109,6 +119,9 @@ const QuestionBox = styled.div`
   background-size: cover;
   height: 100%;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const ContactBox = styled.article`
@@ -118,6 +131,9 @@ const ContactBox = styled.article`
   flex-direction: column;
   height: 100%;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const QuestionBoxTitle = styled.h2`

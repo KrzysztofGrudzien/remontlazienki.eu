@@ -6,6 +6,9 @@ const MainContent = styled.main`
   flex-wrap: wrap;
   height: calc(100% - 206px);
   min-height: calc(100vh - 206px);
+  @media (max-width: 850px) {
+    height: 100%;
+  }
   ${({ color }) =>
     color &&
     css`

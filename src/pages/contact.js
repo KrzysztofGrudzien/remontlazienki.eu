@@ -25,6 +25,8 @@ const FormWrapper = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fontFamily.open};
   display: flex;
+  flex-wrap: wrap;
+  position: relative;
   width: 100%;
 `
 
@@ -33,6 +35,9 @@ const ArticleForm = styled.article`
   flex-direction: column;
   padding: 20px;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 
   input {
     border: none;
@@ -73,6 +78,9 @@ const ArticleForm = styled.article`
       margin: 0;
       padding: 20px 10px 20px 0;
       width: 50%;
+      @media (max-width: 850px) {
+        width: 100%;
+      }
     }
   }
 `
@@ -82,6 +90,9 @@ const ArticleContact = styled.article`
   flex-direction: column;
   padding: 20px;
   width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 
   .owner {
     font-size: ${({ theme }) => theme.fontSize.xxl};
