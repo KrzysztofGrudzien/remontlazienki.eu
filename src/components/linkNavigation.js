@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Link } from "gatsby"
 
 const InternalLink = styled(Link)`
@@ -14,7 +14,7 @@ const InternalLink = styled(Link)`
   text-align: center;
   transition: all 0.3s linear;
   text-decoration: none;
-  width: 150px;
+  max-width: 150px;
 
   &::before {
     background-color: ${({ theme }) => theme.colors.grey300};
@@ -43,7 +43,24 @@ const InternalLink = styled(Link)`
     box-shadow: ${({ theme }) => theme.shadow.primary};
     color: ${({ theme }) => theme.colors.grey50};
   }
+
+  ${({ contact }) =>
+    contact &&
+    css`
+      max-width: 220px;
+
+      &::before {
+        display: none;
+        @media (max-width: 850px) {
+          left: 0;
+        }
+        top: 50%;
+        transition: all 0.3s linear;
+        width: 80%;
+      }
+    `}
 `
+
 const LinkNavigation = ({ type }) => {
   if (type === "service") {
     return <InternalLink to="/services">usługi</InternalLink>
@@ -52,7 +69,11 @@ const LinkNavigation = ({ type }) => {
   } else if (type === "contact") {
     return <InternalLink to="/contact">kontakt</InternalLink>
   } else if (type === "contact-form") {
-    return <InternalLink to="/contact">wypełnij formularz</InternalLink>
+    return (
+      <InternalLink to="/contact" contact>
+        wypełnij formularz
+      </InternalLink>
+    )
   } else if (type === "load-more") {
     return <InternalLink>więcej</InternalLink>
   } else if (type === "send") {
