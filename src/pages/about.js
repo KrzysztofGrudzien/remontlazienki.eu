@@ -79,6 +79,7 @@ const ButtonGallery = styled.button`
       left: 25px;
     `}
 `
+
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
     {
@@ -99,6 +100,7 @@ const AboutPage = () => {
       return <ImgSlider src={item.image.publicURL} />
     }),
   ]
+
   const [posX, setPosX] = useState(0)
 
   const slideLeft = () => {
@@ -116,7 +118,6 @@ const AboutPage = () => {
     hiddenLeft: { opacity: 0, x: -200 },
     hiddenRight: { opacity: 0, x: 200 },
   }
-
   return (
     <Main color>
       <BoxWrapper>

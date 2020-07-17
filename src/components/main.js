@@ -15,6 +15,7 @@ const MainContent = styled.main`
       background-color: ${({ theme }) => theme.colors.grey100};
     `};
 `
+
 const Main = ({ children, color }) => (
   <>
     {color ? (

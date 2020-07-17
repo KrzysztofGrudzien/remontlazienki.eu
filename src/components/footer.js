@@ -12,6 +12,7 @@ const FooterDescription = styled.footer`
   justify-content: center;
   align-items: center;
 `
+
 const Copyright = styled.p`
   margin: 0;
   padding: 0 10px;

@@ -18,6 +18,7 @@ const LinkHeader = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
 `
+
 const activeStyles = {
   borderBottom: "1px solid hsl(0,0%,12.5%)",
 }
@@ -25,6 +26,7 @@ const activeStyles = {
 const LinkHeaderColor = styled(LinkHeader)`
   color: ${({ theme }) => theme.colors.secondary};
 `
+
 const DesktopNavigationList = styled.ul`
   align-items: center;
   display: flex;
@@ -51,7 +53,6 @@ const MobileNavigationList = styled.ul`
   top: 0;
   width: 100%;
   z-index: 1000;
-
   @media (min-width: 850px) {
     display: none;
   }
@@ -148,6 +149,7 @@ const NavigationListItem = styled.li`
     }
   }
 `
+
 const Logo = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.l};
@@ -155,6 +157,7 @@ const Logo = styled.h1`
   margin: 0;
   margin-left: 20px;
 `
+
 const Header = ({ siteTitleColor }) => {
   const [hidden, setHidden] = useState(true)
 
@@ -176,7 +179,6 @@ const Header = ({ siteTitleColor }) => {
       }
     }
   `)
-
   return (
     <NavigationWrapper>
       <Logo>
@@ -197,12 +199,6 @@ const Header = ({ siteTitleColor }) => {
             </Link>
           </NavigationListItem>
         ))}
-        {/* <label>
-          <select name="language" id="language">
-            <option value="pl">PL</option>
-            <option value="en">EN</option>
-          </select>
-        </label> */}
       </DesktopNavigationList>
       <NavigationButton onClick={() => setHidden(!hidden)}>
         <span></span>
@@ -220,12 +216,6 @@ const Header = ({ siteTitleColor }) => {
               </Link>
             </NavigationListItem>
           ))}
-          {/* <label>
-            <select name="language" id="language">
-              <option value="pl">PL</option>
-              <option value="en">EN</option>
-            </select>
-          </label> */}
         </MobileNavigationList>
       )}
     </NavigationWrapper>

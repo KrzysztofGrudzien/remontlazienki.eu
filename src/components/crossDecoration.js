@@ -31,6 +31,7 @@ const CrossLeftTop = styled.span`
     width: 30px;
   }
 `
+
 const CrossRightTop = styled.span`
   display: inline-block;
   height: 30px;
@@ -51,6 +52,7 @@ const CrossRightTop = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -82,6 +84,7 @@ const CrossRightBottom = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -113,6 +116,7 @@ const CrossLeftBottom = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -123,6 +127,7 @@ const CrossLeftBottom = styled.span`
     width: 30px;
   }
 `
+
 const CrossRightTopFix = styled.span`
   top: -15px;
   display: inline-block;
@@ -143,6 +148,7 @@ const CrossRightTopFix = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -174,6 +180,7 @@ const CrossRightBottomFix = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -205,6 +212,7 @@ const CrossCenterBottom = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -236,6 +244,7 @@ const CrossCenterTop = styled.span`
     position: absolute;
     width: 1px;
   }
+
   &::after {
     background-color: ${({ theme }) => theme.colors.grey300};
     content: "";
@@ -246,6 +255,7 @@ const CrossCenterTop = styled.span`
     width: 30px;
   }
 `
+
 const CrossDecoration = ({ type }) => {
   if (type === "left-top") {
     return <CrossLeftTop />

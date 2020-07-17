@@ -16,6 +16,7 @@ const WelcomeText = styled.p`
     line-height: 1.2;
   }
 `
+
 const WelcomeParagraph = ({ type }) => {
   if (type === "about") {
     return <WelcomeText>witaj na naszej stronie</WelcomeText>

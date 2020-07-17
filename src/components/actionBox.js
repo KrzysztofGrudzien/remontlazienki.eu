@@ -54,6 +54,7 @@ const QuestionBoxTitle = styled.h2`
 const ContactBoxTitle = styled(QuestionBoxTitle)`
   color: ${({ theme }) => theme.colors.primary};
 `
+
 const ActionBox = () => {
   const data = useStaticQuery(graphql`
     {
