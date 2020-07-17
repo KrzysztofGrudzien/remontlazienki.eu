@@ -6,6 +6,7 @@ const WelcomeText = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-family: ${({ theme }) => theme.fontFamily.open};
   line-height: 0;
+  margin-bottom: 10px;
   @media (max-width: 1200px) {
     font-size: ${({ theme }) => theme.fontSize.mml};
     line-height: 1.2;

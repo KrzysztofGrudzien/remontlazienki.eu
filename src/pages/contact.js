@@ -21,6 +21,7 @@ const ImageWrapper = styled.div`
   margin-bottom: 50px;
   width: 100%;
 `
+
 const FormWrapper = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fontFamily.open};
@@ -68,20 +69,20 @@ const ArticleForm = styled.article`
       }
     }
   }
+`
 
-  form {
-    justify-content: flex-end;
-    display: flex;
-    flex-wrap: wrap;
+const Form = styled.form`
+  justify-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+`
 
-    p.form-input {
-      margin: 0;
-      padding: 20px 10px 20px 0;
-      width: 50%;
-      @media (max-width: 850px) {
-        width: 100%;
-      }
-    }
+const FormParagraph = styled.p`
+  margin: 0;
+  padding: 20px 10px 20px 0;
+  width: 50%;
+  @media (max-width: 850px) {
+    width: 100%;
   }
 `
 
@@ -105,6 +106,7 @@ const ArticleContact = styled.article`
     font-size: ${({ theme }) => theme.fontSize.mml};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
     margin-top: 50px;
+    margin-bottom: 0;
     @media (max-width: 1024px) {
       font-size: ${({ theme }) => theme.fontSize.ml};
     }
@@ -182,21 +184,21 @@ const ContactPage = ({ data }) => (
           nietuzinkowym wyglądzie, gdzie inwestor może stworzyć niesamowite i
           efektowne wnętrze sam czy korzystając z usług projektantów.
         </CompanyDescription>
-        <form>
-          <p className="form-input">
+        <Form>
+          <FormParagraph>
             <label>
               imię
               <br />
               <input type="text" placeholder="twoję imię" />
             </label>
-          </p>
-          <p className="form-input">
+          </FormParagraph>
+          <FormParagraph>
             <label>
               e-mail
               <br />
               <input type="email" placeholder="twój adres e-mail" />
             </label>
-          </p>
+          </FormParagraph>
           <p className="form-textarea">
             <label>
               wiadomość
@@ -205,7 +207,7 @@ const ContactPage = ({ data }) => (
             </label>
           </p>
           <ButtonMessage>wyślij</ButtonMessage>
-        </form>
+        </Form>
       </ArticleForm>
       <ArticleContact>
         <WelcomeParagraph type="company-desc" />
