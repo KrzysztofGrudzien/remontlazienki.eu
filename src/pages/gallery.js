@@ -21,6 +21,9 @@ const ImageWrapper = styled.div`
   position: relative;
   margin-bottom: 50px;
   width: 100%;
+  @media (max-width: 850px) {
+    height: 255px;
+  }
 `
 
 const GalleryWrapper = styled.article`
