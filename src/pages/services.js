@@ -6,6 +6,7 @@ import styled from "styled-components"
 import CrossDecoration from "../components/crossDecoration"
 import ActionBox from "../components/actionBox"
 import { useStaticQuery, graphql } from "gatsby"
+import { motion } from "framer-motion"
 
 const ImageWrapper = styled.div`
   align-items: center;
@@ -129,11 +130,24 @@ const ServicesPage = () => {
     }
   `)
 
+  const animateProps = {
+    visible: { opacity: 1, x: 0 },
+    visibleTop: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, x: -200 },
+    hiddenTop: { opacity: 0, y: -200 },
+  }
   return (
     <Main>
       <ImageWrapper image={data.file.publicURL} alt="hero">
-        <WelcomeHeader type="about" />
-        <WelcomeParagraph type="about-more" />
+        <motion.div
+          animate="visibleTop"
+          initial="hiddenTop"
+          variants={animateProps}
+          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
+          <WelcomeHeader type="about" />
+          <WelcomeParagraph type="about-more" />
+        </motion.div>
         <CrossDecoration type="left-top" />
         <CrossDecoration type="center-bottom" />
         <CrossDecoration type="right-top-fix" />
@@ -142,8 +156,15 @@ const ServicesPage = () => {
         <CrossDecoration type="right-bottom-fix" />
       </ImageWrapper>
       <Article>
-        <WelcomeParagraph type="service" />
-        <WelcomeHeader type="service" />
+        <motion.div
+          animate="visible"
+          initial="hidden"
+          variants={animateProps}
+          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
+          <WelcomeParagraph type="service" />
+          <WelcomeHeader type="service" />
+        </motion.div>
         <ArticleCards>
           {data.allServicesYaml.nodes.map(item => (
             <ArticleCard>

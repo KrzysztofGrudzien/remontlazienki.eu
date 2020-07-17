@@ -9,6 +9,7 @@ import WelcomeHeader from "../components/welcomeHeader"
 import ArticleParagraph from "../components/articleParagraph"
 import CrossDecoration from "../components/crossDecoration"
 import ImgSlider from "../components/imgSlider"
+import { motion } from "framer-motion"
 
 const GalleryWrapper = styled.div`
   align-items: flex-start;
@@ -110,6 +111,12 @@ const AboutPage = () => {
     console.log(posX)
   }
 
+  const animateProps = {
+    visible: { opacity: 1, x: 0 },
+    hiddenLeft: { opacity: 0, x: -200 },
+    hiddenRight: { opacity: 0, x: 200 },
+  }
+
   return (
     <Main color>
       <BoxWrapper>
@@ -118,32 +125,46 @@ const AboutPage = () => {
           <CrossDecoration type="right-top" />
           <CrossDecoration type="right-bottom" />
           <CrossDecoration type="left-bottom" />
-          <WelcomeParagraph type="about" />
-          <WelcomeHeader type="about" />
-          <ArticleParagraph type="about" />
-          <LinkNavigation type="service" />
+          <motion.div
+            animate="visible"
+            initial="hiddenLeft"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <WelcomeParagraph type="about" />
+            <WelcomeHeader type="about" />
+            <ArticleParagraph type="about" />
+            <LinkNavigation type="service" />
+          </motion.div>
         </Article>
         <GalleryWrapper>
           <CrossDecoration type="right-top-fix" />
           <CrossDecoration type="right-bottom-fix" />
-          <Image>
-            {sliderImages.map((slide, index) => {
-              return (
-                <div
-                  key={index}
-                  className="slide"
-                  style={{ transform: `translateX(${posX}%) ` }}
-                >
-                  {slide}
-                </div>
-              )
-            })}
-            <ButtonGallery prev onClick={slideLeft}>
-              &#10094;
-            </ButtonGallery>
-            <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
-          </Image>
-          <LinkNavigation type="gallery" />
+          <motion.div
+            animate="visible"
+            initial="hiddenRight"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <Image>
+              {sliderImages.map((slide, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="slide"
+                    style={{ transform: `translateX(${posX}%) ` }}
+                  >
+                    {slide}
+                  </div>
+                )
+              })}
+              <ButtonGallery prev onClick={slideLeft}>
+                &#10094;
+              </ButtonGallery>
+              <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
+            </Image>
+            <LinkNavigation type="gallery" />
+          </motion.div>
         </GalleryWrapper>
       </BoxWrapper>
     </Main>

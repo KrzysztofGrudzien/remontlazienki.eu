@@ -7,6 +7,7 @@ import CrossDecoration from "../components/crossDecoration"
 import { useStaticQuery, graphql } from "gatsby"
 import LinkNavigation from "../components/linkNavigation"
 import ActionBox from "../components/actionBox"
+import { motion } from "framer-motion"
 
 const ImageWrapper = styled.div`
   align-items: center;
@@ -102,9 +103,17 @@ const GalleryPage = () => {
       }
     }
   `)
+
   const randomNumber = Math.floor(
     Math.random() * data.allGalleryYaml.nodes[0].images.length
   )
+
+  const animateProps = {
+    visible: { opacity: 1, x: 0 },
+    visibleTop: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, x: -200 },
+    hiddenTop: { opacity: 0, y: -200 },
+  }
   return (
     <Main>
       <ImageWrapper
@@ -113,8 +122,15 @@ const GalleryPage = () => {
         }
         alt="hero"
       >
-        <WelcomeHeader type="about" />
-        <WelcomeParagraph type="about-more" />
+        <motion.div
+          animate="visibleTop"
+          initial="hiddenTop"
+          variants={animateProps}
+          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
+          <WelcomeHeader type="about" />
+          <WelcomeParagraph type="about-more" />
+        </motion.div>
         <CrossDecoration type="left-top" />
         <CrossDecoration type="center-bottom" />
         <CrossDecoration type="right-top-fix" />
@@ -123,8 +139,15 @@ const GalleryPage = () => {
         <CrossDecoration type="right-bottom-fix" />
       </ImageWrapper>
       <GalleryWrapper>
-        <WelcomeParagraph type="gallery" />
-        <WelcomeHeader type="gallery" />
+        <motion.div
+          animate="visible"
+          initial="hidden"
+          variants={animateProps}
+          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
+          <WelcomeParagraph type="gallery" />
+          <WelcomeHeader type="gallery" />
+        </motion.div>
         <GalleryCards>
           {data.allGalleryYaml.nodes[0].images.map(item => (
             <GalleryCard image={item.image.publicURL}>
