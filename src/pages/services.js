@@ -103,7 +103,7 @@ const ArticleHeader = styled.h3`
 const ActionBox = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
-  height: 260px;
+  min-height: 260px;
   margin: 20px 0;
   position: relative;
   width: 100%;
@@ -132,6 +132,7 @@ const ContactBox = styled.article`
   height: 100%;
   width: 50%;
   @media (max-width: 850px) {
+    padding-bottom: 10px;
     width: 100%;
   }
 `
