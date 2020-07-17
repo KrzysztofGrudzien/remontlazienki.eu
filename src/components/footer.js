@@ -14,6 +14,7 @@ const FooterDescription = styled.footer`
 `
 const Copyright = styled.p`
   margin: 0;
+  padding: 0 10px;
   text-align: center;
 `
 

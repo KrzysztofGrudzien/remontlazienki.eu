@@ -18,6 +18,12 @@ const ArticleDescription = styled.article`
       align-self: flex-end;
     }
   }
+
+  h2 {
+    @media (max-width: 850px) {
+      font-size: ${({ theme }) => theme.fontSize.xl};
+    }
+  }
 `
 const Article = ({ children }) => (
   <ArticleDescription>{children}</ArticleDescription>

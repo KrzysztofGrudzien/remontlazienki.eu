@@ -96,12 +96,18 @@ const ArticleContact = styled.article`
 
   .owner {
     font-size: ${({ theme }) => theme.fontSize.xxl};
+    @media (max-width: 1024px) {
+      font-size: ${({ theme }) => theme.fontSize.xl};
+    }
   }
 
   .owner-title {
     font-size: ${({ theme }) => theme.fontSize.mml};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
     margin-top: 50px;
+    @media (max-width: 1024px) {
+      font-size: ${({ theme }) => theme.fontSize.ml};
+    }
   }
 
   .big-text {
@@ -112,6 +118,12 @@ const ArticleContact = styled.article`
 
   span {
     font-weight: ${({ theme }) => theme.fontWeight.medium};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.secondary};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    text-decoration: none;
   }
 `
 

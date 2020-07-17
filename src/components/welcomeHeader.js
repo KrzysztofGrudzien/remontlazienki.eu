@@ -4,6 +4,9 @@ import styled from "styled-components"
 const WelcomeText = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.xxl};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  @media (max-width: 1024px) {
+    font-size: ${({ theme }) => theme.fontSize.xl};
+  }
 `
 const WelcomeHeader = ({ type }) => {
   if (type === "about") {

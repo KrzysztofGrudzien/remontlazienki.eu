@@ -43,6 +43,7 @@ const Image = styled.div`
   position: relative;
   width: 100%;
   @media (max-width: 850px) {
+    height: 40vh;
     margin-top: 0;
     margin-bottom: 20px;
   }
