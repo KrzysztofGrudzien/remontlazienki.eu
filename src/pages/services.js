@@ -137,59 +137,68 @@ const ServicesPage = () => {
     hiddenTop: { opacity: 0, y: -200 },
   }
   return (
-    <Main>
-      <ImageWrapper image={data.file.publicURL} alt="hero">
-        <motion.div
-          animate="visibleTop"
-          initial="hiddenTop"
-          variants={animateProps}
-          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-        >
-          <WelcomeHeader type="about" />
-          <WelcomeParagraph type="about-more" />
-        </motion.div>
-        <CrossDecoration type="left-top" />
-        <CrossDecoration type="center-bottom" />
-        <CrossDecoration type="right-top-fix" />
-        <CrossDecoration type="left-bottom" />
-        <CrossDecoration type="center-top" />
-        <CrossDecoration type="right-bottom-fix" />
-      </ImageWrapper>
-      <Article>
-        <motion.div
-          animate="visible"
-          initial="hidden"
-          variants={animateProps}
-          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-        >
-          <WelcomeParagraph type="service" />
-          <WelcomeHeader type="service" />
-        </motion.div>
-        <ArticleCards>
-          {data.allServicesYaml.nodes.map(item => (
-            <ArticleCard>
-              <CrossDecoration type="left-top" />
-              <CrossDecoration type="right-top" />
-              <CrossDecoration type="left-bottom" />
-              <CrossDecoration type="right-bottom" />
-              <ArticleImage image={item.image.publicURL} alt="hero" />
-              <ArticleHeader>{item.title}</ArticleHeader>
-              <ul>
-                {item.services.map(service => (
-                  <li>
-                    <img
-                      src={data.allFile.edges.map(file => file.node.publicURL)}
-                    />
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </ArticleCard>
-          ))}
-        </ArticleCards>
-      </Article>
-      <ActionBox />
-    </Main>
+    <motion.div
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      transition={{ ease: "easeOut", duration: 1 }}
+    >
+      <Main>
+        <ImageWrapper image={data.file.publicURL} alt="hero">
+          <motion.div
+            animate="visibleTop"
+            initial="hiddenTop"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <WelcomeHeader type="about" />
+            <WelcomeParagraph type="about-more" />
+          </motion.div>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="center-bottom" />
+          <CrossDecoration type="right-top-fix" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="center-top" />
+          <CrossDecoration type="right-bottom-fix" />
+        </ImageWrapper>
+        <Article>
+          <motion.div
+            animate="visible"
+            initial="hidden"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <WelcomeParagraph type="service" />
+            <WelcomeHeader type="service" />
+          </motion.div>
+          <ArticleCards>
+            {data.allServicesYaml.nodes.map(item => (
+              <ArticleCard>
+                <CrossDecoration type="left-top" />
+                <CrossDecoration type="right-top" />
+                <CrossDecoration type="left-bottom" />
+                <CrossDecoration type="right-bottom" />
+                <ArticleImage image={item.image.publicURL} alt="hero" />
+                <ArticleHeader>{item.title}</ArticleHeader>
+                <ul>
+                  {item.services.map(service => (
+                    <li>
+                      <img
+                        src={data.allFile.edges.map(
+                          file => file.node.publicURL
+                        )}
+                      />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+              </ArticleCard>
+            ))}
+          </ArticleCards>
+        </Article>
+        <ActionBox />
+      </Main>
+    </motion.div>
   )
 }
 

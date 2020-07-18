@@ -119,56 +119,63 @@ const AboutPage = () => {
     hiddenRight: { opacity: 0, x: 200 },
   }
   return (
-    <Main color>
-      <BoxWrapper>
-        <Article>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="right-bottom" />
-          <CrossDecoration type="left-bottom" />
-          <motion.div
-            animate="visible"
-            initial="hiddenLeft"
-            variants={animateProps}
-            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-          >
-            <WelcomeParagraph type="about" />
-            <WelcomeHeader type="about" />
-            <ArticleParagraph type="about" />
-            <LinkNavigation type="service" />
-          </motion.div>
-        </Article>
-        <GalleryWrapper>
-          <CrossDecoration type="right-top-fix" />
-          <CrossDecoration type="right-bottom-fix" />
-          <motion.div
-            animate="visible"
-            initial="hiddenRight"
-            variants={animateProps}
-            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-          >
-            <Image>
-              {sliderImages.map((slide, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="slide"
-                    style={{ transform: `translateX(${posX}%) ` }}
-                  >
-                    {slide}
-                  </div>
-                )
-              })}
-              <ButtonGallery prev onClick={slideLeft}>
-                &#10094;
-              </ButtonGallery>
-              <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
-            </Image>
-            <LinkNavigation type="gallery" />
-          </motion.div>
-        </GalleryWrapper>
-      </BoxWrapper>
-    </Main>
+    <motion.div
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      transition={{ ease: "easeOut", duration: 1 }}
+    >
+      <Main color>
+        <BoxWrapper>
+          <Article>
+            <CrossDecoration type="left-top" />
+            <CrossDecoration type="right-top" />
+            <CrossDecoration type="right-bottom" />
+            <CrossDecoration type="left-bottom" />
+            <motion.div
+              animate="visible"
+              initial="hiddenLeft"
+              variants={animateProps}
+              transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+            >
+              <WelcomeParagraph type="about" />
+              <WelcomeHeader type="about" />
+              <ArticleParagraph type="about" />
+              <LinkNavigation type="service" />
+            </motion.div>
+          </Article>
+          <GalleryWrapper>
+            <CrossDecoration type="right-top-fix" />
+            <CrossDecoration type="right-bottom-fix" />
+            <motion.div
+              animate="visible"
+              initial="hiddenRight"
+              variants={animateProps}
+              transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+            >
+              <Image>
+                {sliderImages.map((slide, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="slide"
+                      style={{ transform: `translateX(${posX}%) ` }}
+                    >
+                      {slide}
+                    </div>
+                  )
+                })}
+                <ButtonGallery prev onClick={slideLeft}>
+                  &#10094;
+                </ButtonGallery>
+                <ButtonGallery onClick={slideRight}>&#10095;</ButtonGallery>
+              </Image>
+              <LinkNavigation type="gallery" />
+            </motion.div>
+          </GalleryWrapper>
+        </BoxWrapper>
+      </Main>
+    </motion.div>
   )
 }
 

@@ -2,6 +2,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
+import { AnimatePresence } from "framer-motion"
 
 const NavigationWrapper = styled.nav`
   align-items: center;
@@ -187,19 +188,21 @@ const Header = ({ siteTitleColor }) => {
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
-      <DesktopNavigationList>
-        {data.allMenuYaml.nodes.map(link => (
-          <NavigationListItem key={link.name}>
-            <Link
-              to={link.link}
-              activeStyle={activeStyles}
-              onClick={() => setHidden(hidden)}
-            >
-              {link.name}
-            </Link>
-          </NavigationListItem>
-        ))}
-      </DesktopNavigationList>
+      <AnimatePresence>
+        <DesktopNavigationList>
+          {data.allMenuYaml.nodes.map(link => (
+            <NavigationListItem key={link.name}>
+              <Link
+                to={link.link}
+                activeStyle={activeStyles}
+                onClick={() => setHidden(hidden)}
+              >
+                {link.name}
+              </Link>
+            </NavigationListItem>
+          ))}
+        </DesktopNavigationList>
+      </AnimatePresence>
       <NavigationButton onClick={() => setHidden(!hidden)}>
         <span></span>
       </NavigationButton>

@@ -115,55 +115,62 @@ const GalleryPage = () => {
     hiddenTop: { opacity: 0, y: -200 },
   }
   return (
-    <Main>
-      <ImageWrapper
-        image={
-          data.allGalleryYaml.nodes[0].images[randomNumber].image.publicURL
-        }
-        alt="hero"
-      >
-        <motion.div
-          animate="visibleTop"
-          initial="hiddenTop"
-          variants={animateProps}
-          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+    <motion.div
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      transition={{ ease: "easeOut", duration: 1 }}
+    >
+      <Main>
+        <ImageWrapper
+          image={
+            data.allGalleryYaml.nodes[0].images[randomNumber].image.publicURL
+          }
+          alt="hero"
         >
-          <WelcomeHeader type="about" />
-          <WelcomeParagraph type="about-more" />
-        </motion.div>
-        <CrossDecoration type="left-top" />
-        <CrossDecoration type="center-bottom" />
-        <CrossDecoration type="right-top-fix" />
-        <CrossDecoration type="left-bottom" />
-        <CrossDecoration type="center-top" />
-        <CrossDecoration type="right-bottom-fix" />
-      </ImageWrapper>
-      <GalleryWrapper>
-        <motion.div
-          animate="visible"
-          initial="hidden"
-          variants={animateProps}
-          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-        >
-          <WelcomeParagraph type="gallery" />
-          <WelcomeHeader type="gallery" />
-        </motion.div>
-        <GalleryCards>
-          {data.allGalleryYaml.nodes[0].images.map(item => (
-            <GalleryCard image={item.image.publicURL}>
-              <CrossDecoration type="left-top" />
-              <CrossDecoration type="right-top" />
-              <CrossDecoration type="left-bottom" />
-              <CrossDecoration type="right-bottom" />
-            </GalleryCard>
-          ))}
-        </GalleryCards>
-        <div className="container">
-          <LinkNavigation type="load-more" />
-        </div>
-      </GalleryWrapper>
-      <ActionBox />
-    </Main>
+          <motion.div
+            animate="visibleTop"
+            initial="hiddenTop"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <WelcomeHeader type="about" />
+            <WelcomeParagraph type="about-more" />
+          </motion.div>
+          <CrossDecoration type="left-top" />
+          <CrossDecoration type="center-bottom" />
+          <CrossDecoration type="right-top-fix" />
+          <CrossDecoration type="left-bottom" />
+          <CrossDecoration type="center-top" />
+          <CrossDecoration type="right-bottom-fix" />
+        </ImageWrapper>
+        <GalleryWrapper>
+          <motion.div
+            animate="visible"
+            initial="hidden"
+            variants={animateProps}
+            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+          >
+            <WelcomeParagraph type="gallery" />
+            <WelcomeHeader type="gallery" />
+          </motion.div>
+          <GalleryCards>
+            {data.allGalleryYaml.nodes[0].images.map(item => (
+              <GalleryCard image={item.image.publicURL}>
+                <CrossDecoration type="left-top" />
+                <CrossDecoration type="right-top" />
+                <CrossDecoration type="left-bottom" />
+                <CrossDecoration type="right-bottom" />
+              </GalleryCard>
+            ))}
+          </GalleryCards>
+          <div className="container">
+            <LinkNavigation type="load-more" />
+          </div>
+        </GalleryWrapper>
+        <ActionBox />
+      </Main>
+    </motion.div>
   )
 }
 

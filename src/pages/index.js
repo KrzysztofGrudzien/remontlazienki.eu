@@ -38,31 +38,38 @@ const IndexPage = ({ data }) => {
     hidden: { opacity: 0, x: -200 },
   }
   return (
-    <Main color>
-      <BoxWrapper>
-        <Article>
-          <CrossDecoration type="left-top" />
-          <CrossDecoration type="right-top" />
-          <CrossDecoration type="right-bottom" />
-          <CrossDecoration type="left-bottom" />
-          <motion.div
-            animate="visible"
-            initial="hidden"
-            variants={animateProps}
-            transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-          >
-            <WelcomeParagraph />
-            <WelcomeHeader />
-            <ArticleParagraph />
-            <LinkNavigation />
-          </motion.div>
-        </Article>
-        <ImageWrapper image={data.file.publicURL} alt="hero">
-          <CrossDecoration type="right-top-fix" />
-          <CrossDecoration type="right-bottom-fix" />
-        </ImageWrapper>
-      </BoxWrapper>
-    </Main>
+    <motion.div
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      transition={{ ease: "easeOut", duration: 1 }}
+    >
+      <Main color>
+        <BoxWrapper>
+          <Article>
+            <CrossDecoration type="left-top" />
+            <CrossDecoration type="right-top" />
+            <CrossDecoration type="right-bottom" />
+            <CrossDecoration type="left-bottom" />
+            <motion.div
+              animate="visible"
+              initial="hidden"
+              variants={animateProps}
+              transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+            >
+              <WelcomeParagraph />
+              <WelcomeHeader />
+              <ArticleParagraph />
+              <LinkNavigation />
+            </motion.div>
+          </Article>
+          <ImageWrapper image={data.file.publicURL} alt="hero image">
+            <CrossDecoration type="right-top-fix" />
+            <CrossDecoration type="right-bottom-fix" />
+          </ImageWrapper>
+        </BoxWrapper>
+      </Main>
+    </motion.div>
   )
 }
 
