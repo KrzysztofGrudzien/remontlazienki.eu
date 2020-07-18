@@ -1,7 +1,7 @@
 import React from "react"
 import Main from "../components/main"
 import styled from "styled-components"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import LinkNavigation from "../components/linkNavigation"
 import Article from "../components/article"
 import WelcomeParagraph from "../components/welcomeParagraph"
@@ -15,7 +15,8 @@ const ImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 100%;
+  height: calc(100% - 206px);
+  min-height: calc(100vh - 206px);
   position: relative;
   width: 50%;
   @media (max-width: 850px) {
@@ -32,11 +33,30 @@ const BoxWrapper = styled.div`
   width: 100%;
 `
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allGalleryYaml {
+        nodes {
+          images {
+            image {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+  `)
+
   const animateProps = {
     visible: { opacity: 1, x: 0 },
     hidden: { opacity: 0, x: -200 },
   }
+
+  const randomNumber = Math.floor(
+    Math.random() * data.allGalleryYaml.nodes[0].images.length
+  )
+
   return (
     <motion.div
       exit={{ opacity: 0 }}
@@ -63,7 +83,12 @@ const IndexPage = ({ data }) => {
               <LinkNavigation />
             </motion.div>
           </Article>
-          <ImageWrapper image={data.file.publicURL} alt="hero image">
+          <ImageWrapper
+            image={
+              data.allGalleryYaml.nodes[0].images[randomNumber].image.publicURL
+            }
+            alt="hero image"
+          >
             <CrossDecoration type="right-top-fix" />
             <CrossDecoration type="right-bottom-fix" />
           </ImageWrapper>
@@ -72,13 +97,5 @@ const IndexPage = ({ data }) => {
     </motion.div>
   )
 }
-
-export const query = graphql`
-  {
-    file(name: { eq: "hero2" }) {
-      publicURL
-    }
-  }
-`
 
 export default IndexPage
