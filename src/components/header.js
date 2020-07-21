@@ -107,7 +107,7 @@ const NavigationButton = styled.button`
   }
 `
 
-const NavigationListItem = styled.li`
+const NavigationListItem = styled(motion.li)`
   margin-right: 34px;
   margin-bottom: 0;
   text-transform: lowercase;
@@ -190,10 +190,39 @@ const Header = ({ siteTitleColor }) => {
     initial: { x: -1000 },
     open: {
       x: 0,
-      transition: { duration: 0.4 },
+      transition: {
+        duration: 0.4,
+        staggerChildren: 0.07,
+        delayChildren: 0.2,
+      },
     },
-    closed: { x: -1000, transition: { duration: 0.4 } },
+    closed: {
+      x: 1000,
+      transition: {
+        duration: 0.4,
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
   }
+
+  const animateNavigationItemProps = {
+    open: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 100, velocity: -100 },
+      },
+    },
+    closed: {
+      y: 50,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 100 },
+      },
+    },
+  }
+
   return (
     <NavigationWrapper>
       <Logo
@@ -230,26 +259,28 @@ const Header = ({ siteTitleColor }) => {
       <NavigationButton onClick={() => setIsOpen(!isOpen)}>
         <span></span>
       </NavigationButton>
-      {!isOpen && (
-        <MobileNavigationList
-          animate={isOpen ? "closed" : "open"}
-          initial="initial"
-          variants={animateNavigationProps}
-          // transition={{ duration: 0.7, times: [0, 0.2, 1] }}
-        >
-          {data.allMenuYaml.nodes.map(link => (
-            <NavigationListItem key={link.name}>
-              <Link
-                to={link.link}
-                activeStyle={activeStyles}
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {link.name}
-              </Link>
-            </NavigationListItem>
-          ))}
-        </MobileNavigationList>
-      )}
+      <MobileNavigationList
+        animate={isOpen ? "closed" : "open"}
+        initial="initial"
+        variants={animateNavigationProps}
+      >
+        {data.allMenuYaml.nodes.map(link => (
+          <NavigationListItem
+            key={link.name}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            variants={animateNavigationItemProps}
+          >
+            <Link
+              to={link.link}
+              activeStyle={activeStyles}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {link.name}
+            </Link>
+          </NavigationListItem>
+        ))}
+      </MobileNavigationList>
     </NavigationWrapper>
   )
 }
