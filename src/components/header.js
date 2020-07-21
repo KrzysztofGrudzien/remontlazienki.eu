@@ -40,7 +40,7 @@ const DesktopNavigationList = styled(motion.ul)`
   }
 `
 
-const MobileNavigationList = styled.ul`
+const MobileNavigationList = styled(motion.ul)`
   align-items: center;
   display: flex;
   list-style: none;
@@ -160,7 +160,7 @@ const Logo = styled(motion.h1)`
 `
 
 const Header = ({ siteTitleColor }) => {
-  const [hidden, setHidden] = useState(true)
+  const [isOpen, setIsOpen] = useState(true)
 
   const data = useStaticQuery(graphql`
     {
@@ -185,13 +185,22 @@ const Header = ({ siteTitleColor }) => {
     hidden: { opacity: 1, scale: 1, x: 0 },
     hiddenLeft: { opacity: 0, scale: 0.8, x: 300 },
   }
+
+  const animateNavigationProps = {
+    initial: { x: -1000 },
+    open: {
+      x: 0,
+      transition: { duration: 0.4 },
+    },
+    closed: { x: -1000, transition: { duration: 0.4 } },
+  }
   return (
     <NavigationWrapper>
       <Logo
         animate="hidden"
         initial={{ opacity: 0, scale: 0.8, x: -100 }}
         variants={animateHeaderProps}
-        transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        transition={{ duration: 0.4, times: [0, 0.2, 1] }}
       >
         <LinkHeader to="/">
           {data.allSite.nodes[0].siteMetadata.title.substring(0, 6)}
@@ -210,7 +219,7 @@ const Header = ({ siteTitleColor }) => {
               <Link
                 to={link.link}
                 activeStyle={activeStyles}
-                onClick={() => setHidden(hidden)}
+                onClick={() => setIsOpen(isOpen)}
               >
                 {link.name}
               </Link>
@@ -218,17 +227,22 @@ const Header = ({ siteTitleColor }) => {
           ))}
         </DesktopNavigationList>
       </AnimatePresence>
-      <NavigationButton onClick={() => setHidden(!hidden)}>
+      <NavigationButton onClick={() => setIsOpen(!isOpen)}>
         <span></span>
       </NavigationButton>
-      {!hidden && (
-        <MobileNavigationList>
+      {!isOpen && (
+        <MobileNavigationList
+          animate={isOpen ? "closed" : "open"}
+          initial="initial"
+          variants={animateNavigationProps}
+          // transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
           {data.allMenuYaml.nodes.map(link => (
             <NavigationListItem key={link.name}>
               <Link
                 to={link.link}
                 activeStyle={activeStyles}
-                onClick={() => setHidden(!hidden)}
+                onClick={() => setIsOpen(!isOpen)}
               >
                 {link.name}
               </Link>
