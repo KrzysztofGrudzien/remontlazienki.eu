@@ -2,7 +2,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 const NavigationWrapper = styled.nav`
   align-items: center;
@@ -28,7 +28,7 @@ const LinkHeaderColor = styled(LinkHeader)`
   color: ${({ theme }) => theme.colors.secondary};
 `
 
-const DesktopNavigationList = styled.ul`
+const DesktopNavigationList = styled(motion.ul)`
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -151,7 +151,7 @@ const NavigationListItem = styled.li`
   }
 `
 
-const Logo = styled.h1`
+const Logo = styled(motion.h1)`
   color: ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
@@ -180,16 +180,31 @@ const Header = ({ siteTitleColor }) => {
       }
     }
   `)
+
+  const animateHeaderProps = {
+    hidden: { opacity: 1, scale: 1, x: 0 },
+    hiddenLeft: { opacity: 0, scale: 0.8, x: 300 },
+  }
   return (
     <NavigationWrapper>
-      <Logo>
+      <Logo
+        animate="hidden"
+        initial={{ opacity: 0, scale: 0.8, x: -100 }}
+        variants={animateHeaderProps}
+        transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+      >
         <LinkHeader to="/">
           {data.allSite.nodes[0].siteMetadata.title.substring(0, 6)}
           <LinkHeaderColor>{siteTitleColor}</LinkHeaderColor>
         </LinkHeader>
       </Logo>
       <AnimatePresence>
-        <DesktopNavigationList>
+        <DesktopNavigationList
+          animate="hidden"
+          initial="hiddenLeft"
+          variants={animateHeaderProps}
+          transition={{ duration: 0.7, times: [0, 0.2, 1] }}
+        >
           {data.allMenuYaml.nodes.map(link => (
             <NavigationListItem key={link.name}>
               <Link
