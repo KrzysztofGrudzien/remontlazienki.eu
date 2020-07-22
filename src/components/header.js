@@ -59,7 +59,7 @@ const MobileNavigationList = styled(motion.ul)`
   }
 `
 
-const NavigationButton = styled.button`
+const NavigationButton = styled(motion.button)`
   align-items: center;
   background: none;
   border: none;
@@ -74,32 +74,70 @@ const NavigationButton = styled.button`
   width: 50px;
   z-index: 10000;
 
-  span {
+  @media (min-width: 850px) {
+    display: none;
+  }
+`
+
+const BurgerMenuOpen = styled(motion.span)`
+  background-color: ${({ theme }) => theme.colors.grey50};
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 30px;
+
+  &::before {
     background-color: ${({ theme }) => theme.colors.primary};
-    display: block;
+    content: "";
     height: 1px;
-    position: relative;
-    width: 30px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(0%, 0%) rotate(-45deg);
+    width: 100%;
+  }
 
-    &::before {
-      background-color: ${({ theme }) => theme.colors.primary};
-      content: "";
-      height: 1px;
-      left: 0;
-      position: absolute;
-      top: 8px;
-      width: 100%;
-    }
+  &::after {
+    background-color: ${({ theme }) => theme.colors.primary};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    transform: translate(0%, 0%) rotate(45deg);
+    width: 100%;
+  }
 
-    &::after {
-      background-color: ${({ theme }) => theme.colors.primary};
-      content: "";
-      height: 1px;
-      left: 0;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-    }
+  @media (min-width: 850px) {
+    display: none;
+  }
+`
+
+const BurgerMenuClose = styled(motion.span)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 30px;
+
+  &::before {
+    background-color: ${({ theme }) => theme.colors.primary};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+    width: 100%;
+  }
+
+  &::after {
+    background-color: ${({ theme }) => theme.colors.primary};
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
   }
 
   @media (min-width: 850px) {
@@ -223,6 +261,16 @@ const Header = ({ siteTitleColor }) => {
     },
   }
 
+  const animateBurgerMenuOpenProps = {
+    open: { opacity: 1, transition: { duration: 0.2 } },
+    closed: { opacity: 0, transition: { duration: 0.2 } },
+  }
+
+  const animateBurgerMenuCloseProps = {
+    open: { opacity: 1, transition: { duration: 0.2 } },
+    closed: { opacity: 0, transition: { duration: 0.2 } },
+  }
+
   return (
     <NavigationWrapper>
       <Logo
@@ -257,7 +305,14 @@ const Header = ({ siteTitleColor }) => {
         </DesktopNavigationList>
       </AnimatePresence>
       <NavigationButton onClick={() => setIsOpen(!isOpen)}>
-        <span></span>
+        <BurgerMenuClose
+          animate={isOpen ? "open" : "closed"}
+          variants={animateBurgerMenuCloseProps}
+        />
+        <BurgerMenuOpen
+          animate={!isOpen ? "open" : "closed"}
+          variants={animateBurgerMenuOpenProps}
+        />
       </NavigationButton>
       <MobileNavigationList
         animate={isOpen ? "closed" : "open"}
