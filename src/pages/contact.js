@@ -218,7 +218,7 @@ const ContactPage = ({ data }) => {
                 name="contact"
                 className="form"
                 method="POST"
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
                 data-netlify="true"
               >
                 <FormParagraph>
