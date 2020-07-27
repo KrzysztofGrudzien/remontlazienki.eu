@@ -128,39 +128,39 @@ const ArticleContact = styled.article`
     font-weight: ${({ theme }) => theme.fontWeight.medium};
     text-decoration: none;
   }
+
+  .form-button {
+    border: none;
+    background-color: ${({ theme }) => theme.colors.grey300};
+    color: ${({ theme }) => theme.colors.grey50};
+    cursor: pointer;
+    display: inline-block;
+    font-size: ${({ theme }) => theme.fontSize.s};
+    font-family: ${({ theme }) => theme.fontFamily.open};
+    padding: 10px 40px;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s linear;
+    text-decoration: none;
+    width: 150px;
+
+    &:hover::before {
+      right: 0;
+      width: 0;
+    }
+
+    :hover {
+      background-color: ${({ theme }) => theme.colors.grey100};
+      box-shadow: ${({ theme }) => theme.shadow.primary};
+      color: ${({ theme }) => theme.colors.grey300};
+    }
+  }
 `
 
 const CompanyDescription = styled.p`
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   line-height: 1.8;
-`
-
-const ButtonMessage = styled.button`
-  border: none;
-  background-color: ${({ theme }) => theme.colors.grey300};
-  color: ${({ theme }) => theme.colors.grey50};
-  cursor: pointer;
-  display: inline-block;
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-family: ${({ theme }) => theme.fontFamily.open};
-  padding: 10px 40px;
-  position: relative;
-  text-align: center;
-  transition: all 0.3s linear;
-  text-decoration: none;
-  width: 150px;
-
-  &:hover::before {
-    right: 0;
-    width: 0;
-  }
-
-  :hover {
-    background-color: ${({ theme }) => theme.colors.grey100};
-    box-shadow: ${({ theme }) => theme.shadow.primary};
-    color: ${({ theme }) => theme.colors.grey300};
-  }
 `
 
 const ContactPage = ({ data }) => {
@@ -246,7 +246,9 @@ const ContactPage = ({ data }) => {
                     <textarea placeholder="twoja wiadomość" />
                   </label>
                 </p>
-                <ButtonMessage>wyślij</ButtonMessage>
+                <button className="form-button" type="submit">
+                  wyślij
+                </button>
               </form>
             </motion.div>
           </ArticleForm>
