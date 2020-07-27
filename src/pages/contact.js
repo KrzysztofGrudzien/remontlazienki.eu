@@ -70,12 +70,12 @@ const ArticleForm = styled.article`
       }
     }
   }
-`
 
-const Form = styled.form`
-  justify-content: flex-end;
-  display: flex;
-  flex-wrap: wrap;
+  .form {
+    justify-content: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+  }
 `
 
 const FormParagraph = styled.p`
@@ -207,7 +207,6 @@ const ContactPage = ({ data }) => {
             >
               <WelcomeParagraph type="contact" />
               <WelcomeHeader type="contact" />
-
               <CompanyDescription>
                 Oferujemy usługi wykończeniowe łazienek. Idziemy z duchem czasu
                 i wiemy, że od kilku lat nastał trend na tworzenie łazienek o
@@ -215,20 +214,29 @@ const ContactPage = ({ data }) => {
                 niesamowite i efektowne wnętrze sam czy korzystając z usług
                 projektantów.
               </CompanyDescription>
-
-              <Form>
+              <form
+                name="contact"
+                className="form"
+                method="POST"
+                netlify-honeypot="bot-field"
+                data-netlify="true"
+              >
                 <FormParagraph>
                   <label>
                     imię
                     <br />
-                    <input type="text" placeholder="twoję imię" />
+                    <input name="name" type="text" placeholder="twoję imię" />
                   </label>
                 </FormParagraph>
                 <FormParagraph>
                   <label>
                     e-mail
                     <br />
-                    <input type="email" placeholder="twój adres e-mail" />
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="twój adres e-mail"
+                    />
                   </label>
                 </FormParagraph>
                 <p className="form-textarea">
@@ -239,7 +247,7 @@ const ContactPage = ({ data }) => {
                   </label>
                 </p>
                 <ButtonMessage>wyślij</ButtonMessage>
-              </Form>
+              </form>
             </motion.div>
           </ArticleForm>
           <ArticleContact>
