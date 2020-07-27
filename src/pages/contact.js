@@ -222,10 +222,17 @@ const ContactPage = ({ data }) => {
                 data-netlify="true"
               >
                 <FormParagraph>
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p hidden>
+                    <label>
+                      Don’t fill this out: <input name="bot-field" />
+                    </label>
+                  </p>
+                </FormParagraph>
+                <FormParagraph>
                   <label>
                     imię
                     <br />
-                    <input type="hidden" name="bot-field" />
                     <input name="name" type="text" placeholder="twoję imię" />
                   </label>
                 </FormParagraph>
@@ -233,7 +240,6 @@ const ContactPage = ({ data }) => {
                   <label>
                     e-mail
                     <br />
-                    <input type="hidden" name="bot-field" />
                     <input
                       name="email"
                       type="email"
