@@ -218,13 +218,14 @@ const ContactPage = ({ data }) => {
                 name="contact"
                 className="form"
                 method="POST"
-                data-netlify-honeypot="bot-field"
+                netlify-honeypot="bot-field"
                 data-netlify="true"
               >
                 <FormParagraph>
                   <label>
                     imię
                     <br />
+                    <input type="hidden" name="bot-field" />
                     <input name="name" type="text" placeholder="twoję imię" />
                   </label>
                 </FormParagraph>
@@ -232,6 +233,7 @@ const ContactPage = ({ data }) => {
                   <label>
                     e-mail
                     <br />
+                    <input type="hidden" name="bot-field" />
                     <input
                       name="email"
                       type="email"
